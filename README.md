@@ -1,6 +1,6 @@
-# eleme
+# notebook
 
-> eleme app
+> notebook app
 
 ## Build Setup
 

@@ -43,6 +43,7 @@
         }
         this.weatherData = response.weatherinfo
         console.log(this.weatherData)
+        console.log(new Date())
       })
     },
     name: 'app',
