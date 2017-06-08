@@ -35,7 +35,8 @@
       }
     },
     created () {
-      this.$http.get('/api/data/cityinfo/101010100.html').then((response) => {
+      var url = this.HOST + '/data/cityinfo/101010100.html'
+      this.$http.get(url).then((response) => {
         response = response.body
         console.log(response)
         if (response.errno === ERR_OK) {
