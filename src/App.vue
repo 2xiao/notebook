@@ -35,16 +35,12 @@
       }
     },
     created () {
-      var url = this.HOST + '/data/cityinfo/101010100.html'
-      this.$http.get(url).then((response) => {
+      this.$http.get('/api/data/cityinfo/101010100.html').then((response) => {
         response = response.body
-        console.log(response)
         if (response.errno === ERR_OK) {
           this.weatherData = Object.assign({}, this.weatherData, response)
         }
         this.weatherData = response.weatherinfo
-        console.log(this.weatherData)
-        console.log(new Date())
       })
     },
     name: 'app',

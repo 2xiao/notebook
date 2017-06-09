@@ -16,7 +16,7 @@
         </div>
         <span>{{time.getFullYear()}}年{{time.getMonth()+1}}月{{time.getDate()}}日{{aweek[time.getDay()]}}</span>
       </div>
-    </div>      
+    </div>    
   </div>
 </template>
 
@@ -30,6 +30,10 @@ export default {
   created () {
     this.time = new Date()
     this.aweek = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+    this.$http.jsonp('https://api.weibo.com/2/statuses/public_timeline.json').then((weibo) => {
+      weibo = weibo.body
+      console.log(weibo)
+    })
   },
   data () {
     return {
@@ -46,14 +50,18 @@ export default {
   color: #fff;
   background: rgba(7, 17, 27, 0.5);
 }
+.content-wrapper {
+  float: left;
+  width: 100%;
+}
 .avater {
   padding-left: 10px;
 }
-.avater img{
+.avater img {
   width: 40px;
   height: 40px;
 }
-.weather img{
+.weather img {
   width: 20px;
   height: 20px;
 }
