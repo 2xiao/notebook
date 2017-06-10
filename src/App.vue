@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header :weatherData='weatherData'></v-header>
+    <v-header></v-header>
     <div class="tab">
       <div class="tab-item">
         <router-link to="/todo">事项</router-link>
@@ -20,32 +20,16 @@
 </template>
 
 <script>
+  import Weather from './getWeather'
   import header from 'components/header/header'
-  const ERR_OK = 0
   export default {
-    data () {
-      return {
-        weatherData: {}
-        // {
-        //   // id: (() => {
-        //   //   let queryParam = urlParse();
-        //   //   return queryParam.id;
-        //   // })()
-        // }
-      }
-    },
-    created () {
-      this.$http.get('/api/data/cityinfo/101010100.html').then((response) => {
-        response = response.body
-        if (response.errno === ERR_OK) {
-          this.weatherData = Object.assign({}, this.weatherData, response)
-        }
-        this.weatherData = response.weatherinfo
-      })
-    },
     name: 'app',
     components: {
       'v-header': header
+    },
+    created () {
+      Weather.getAsyncScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js').then(function () {
+      })
     }
   }
 </script>

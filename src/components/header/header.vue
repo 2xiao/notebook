@@ -1,44 +1,38 @@
 <template>
   <div class="header">
-    <div class="content-wrapper">
-      <div class="avater">
-        <img :src="logo">
-      </div>
-      <div class="weather">
-        <span class="city">{{weatherData.city}}</span>
-        <span class="temp">{{weatherData.temp1}}~{{weatherData.temp2}}</span>
-        <span class="weatherChi">{{weatherData.WD}}{{weatherData.weather}}</span>
-        <div v-if= "time.getHours() > 20 || time.getHours() < 6">
-          <img :src="'http://m.weather.com.cn/img/'+weatherData.img1">
-        </div>
-        <div v-else>
-          <img :src="'http://m.weather.com.cn/img/'+weatherData.img2">
-        </div>
-        <span>{{time.getFullYear()}}年{{time.getMonth()+1}}月{{time.getDate()}}日{{aweek[time.getDay()]}}</span>
-      </div>
+    <div class="time">
+      <span><strong>{{time.getFullYear()}}年{{time.getMonth()+1}}月{{time.getDate()}}日</strong></span>
+      <span>{{aweek[time.getDay()]}}</span> 
+    </div>
+    <div class="content-wrapper"> 
+      <v-weather :arr="arr"></v-weather>  
     </div>    
   </div>
 </template>
 
 <script>
+import weather from 'components/header/weather'
+import Weather from '../../getWeather'
 export default {
-  props: {
-    weatherData: {
-      type: Object
-    }
-  },
   created () {
     this.time = new Date()
     this.aweek = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
-    this.$http.jsonp('https://api.weibo.com/2/statuses/public_timeline.json').then((weibo) => {
-      weibo = weibo.body
-      console.log(weibo)
+    var self = this
+    Weather.getJSON('http://wthrcdn.etouch.cn/weather_mini?city=北京').then(function (obj) {
+      self.arr = {
+        weat: obj.data.forecast[0].type,
+        temp: obj.data.wendu
+      }
     })
   },
   data () {
     return {
-      logo: require('components/header/logo.png')
+      logo: require('components/header/logo.png'),
+      arr: {}
     }
+  },
+  components: {
+    'v-weather': weather
   }
 }
 </script>
@@ -48,21 +42,29 @@ export default {
   position: relative;
   overflow: hidden;
   color: #fff;
-  background: rgba(7, 17, 27, 0.5);
-}
-.content-wrapper {
-  float: left;
+  background-image: url(./bg01.jpg);
+  background-size: 100%, 100px;
+  background-repeat: no-repeat;
   width: 100%;
+  height: 100px;
 }
-.avater {
-  padding-left: 10px;
+
+.time {
+  float: left;
+  width: 60%;
+  margin-top: 5px;
 }
-.avater img {
-  width: 40px;
-  height: 40px;
+
+.time span {
+  display: block;
+  text-align: left;
+  font-size: 20px;
+  padding-top: 15px;
+  padding-left: 20px;
 }
-.weather img {
-  width: 20px;
-  height: 20px;
+
+.content-wrapper {
+  float: right;
+  width: 37%;
 }
 </style>

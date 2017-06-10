@@ -15,7 +15,7 @@ import Store from '../../store'
 export default {
   data () {
     return {
-      msg: '一个用Vue写的To Do List',
+      msg: '一个用的To Do List',
       items: Store.fetch() || [],
       newItem: ''
     }
