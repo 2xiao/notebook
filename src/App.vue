@@ -3,13 +3,13 @@
     <v-header></v-header>
     <div class="tab">
       <div class="tab-item">
-        <router-link to="/todo">事项</router-link>
+        <router-link to="/todo">待办</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/fit">体重</router-link>
+        <router-link to="/fit">健康</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/money">记账</router-link>
+        <router-link to="/money">账本</router-link>
       </div>
       <div class="tab-item">
         <router-link to="/pro">项目</router-link>
