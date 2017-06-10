@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import Weather from './getWeather'
+  import Weather from 'components/header/getWeather'
   import header from 'components/header/header'
   export default {
     name: 'app',

@@ -1,8 +1,10 @@
 <template>
   <div class="header" :style="bgimage">
     <div class="time">
-      <span><strong>{{time.getFullYear()}}年{{time.getMonth()+1}}月{{time.getDate()}}日</strong></span>
-      <span>{{aweek[time.getDay()]}}</span> 
+      <span class="day">{{time.getDate()}}</span>
+      <span class="week">{{aweek[time.getDay()]}}</span> 
+      <span class="year">{{month[time.getMonth()]}},&nbsp;{{time.getFullYear()}}</span>
+      
     </div>
     <div class="content-wrapper"> 
       <v-weather :arr="arr"></v-weather>  
@@ -12,11 +14,12 @@
 
 <script>
 import weather from 'components/header/weather'
-import Weather from '../../getWeather'
+import Weather from 'components/header/getWeather'
 export default {
   created () {
     this.time = new Date()
-    this.aweek = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+    this.month = ['January', 'February', 'March', 'April ', 'May', 'June', 'Jul', 'August', 'September', 'October', 'November ', 'December']
+    this.aweek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     var self = this
     Weather.getJSON('http://wthrcdn.etouch.cn/weather_mini?city=北京').then(function (obj) {
       self.arr = {
@@ -27,7 +30,6 @@ export default {
   },
   data () {
     return {
-      logo: require('components/header/logo.png'),
       arr: {},
       bgimage: {
         backgroundImage: 'url(' + require('components/header/bg01.jpg') + ')',
@@ -52,21 +54,31 @@ export default {
 }
 
 .time {
+  position: relative;
   float: left;
-  width: 60%;
-  margin-top: 5px;
+  width: 55%;
+  margin-top: 20px;
 }
 
 .time span {
   display: block;
   text-align: left;
-  font-size: 20px;
-  padding-top: 15px;
-  padding-left: 20px;
+}
+
+.day {
+  float: left;
+  font-size: 4em;
+  margin-right: 10px;
+}
+.week {
+  margin-top: 10px;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding-bottom: 5px;
 }
 
 .content-wrapper {
   float: right;
-  width: 37%;
+  width: 40%;
 }
 </style>

@@ -1,66 +1,48 @@
 <template>
-  <div class="todo">
-    <h1>{{ msg }}</h1>
-    <input v-model="newItem" v-on:keyup.enter="addNew">
-    <button>click</button>
-    <ul>
-      <li v-for="item in items" v-bind:class="{finished: item.isFinished}" v-on:click = "changeFinish(item)">
-        {{item.label}}
-      </li>
-    </ul>
+  <div id="container">
+    <div id="menu">
+    <v-menu></v-menu>
+    </div>
+    <div class="content-overlay"></div>
+    <div id="content-container">
+      <list></list>
+    </div>
   </div>
 </template>
+
 <script>
-import Store from '../../store'
+import list from './list'
+import menu from './menu'
 export default {
   data () {
     return {
-      msg: '一个用的To Do List',
-      items: Store.fetch() || [],
-      newItem: ''
+      todoId: ''
     }
   },
-  watch: {
-    items: {
-      handler: function (items) {
-        Store.save(items)
-      },
-      deep: true
-    }
-  },
-  methods: {
-    changeFinish: function (item) {
-      item.isFinished = !item.isFinished
-    },
-    addNew: function () {
-      this.items.push({
-        isFinished: false,
-        label: this.newItem
-      })
-      this.newItem = ''
-    }
+  components: {
+    'v-menu': menu,
+    list
   }
 }
-
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.finished{
-  text-decoration: line-through;
+<style>
+
+#container {
+  display: flex;
+  position: absolute;
+  top: 140px;
+  bottom: 0px;
+  width: 100%;
+  overflow: hidden;
 }
-h1, h2 {
-  font-weight: normal;
+#menu {
+  flex: 0 0 180px;
+  width: 180px;
+  background: #f3f5f7;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+#content-container {
+  flex: 1
 }
-li {
-/*  display: inline-block;
-*/  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

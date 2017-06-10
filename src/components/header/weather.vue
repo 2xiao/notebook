@@ -41,6 +41,7 @@ margin: 0 auto;
   float: right;
   margin: 10px, 5px;
   padding-top: 10px;
+  padding-right: 10px;
 }
 :root { --sw: 10px;/*等同于设置所有的path line 等stroke-width="10"*/ --a: 30deg; }
 

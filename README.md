@@ -22,6 +22,11 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ### 待解决的问题
 
-vue 跨域 jsonp 天气API
-
-微博登录
+- 天气API vue 跨域 jsonp 
+  - 已解决
+  - 要注意的地方：
+    - 回调函数中this指向问题，返回数据时要更改
+    - 跨域的方式
+- TODO 模块的左边栏和右内容版块
+  - vuex状态管理
+- 微博登录
