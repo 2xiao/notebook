@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :style="bgimage">
     <div class="time">
       <span><strong>{{time.getFullYear()}}年{{time.getMonth()+1}}月{{time.getDate()}}日</strong></span>
       <span>{{aweek[time.getDay()]}}</span> 
@@ -28,7 +28,12 @@ export default {
   data () {
     return {
       logo: require('components/header/logo.png'),
-      arr: {}
+      arr: {},
+      bgimage: {
+        backgroundImage: 'url(' + require('components/header/bg01.jpg') + ')',
+        backgroundSize: '100%, 100px',
+        backgroundRepeat: 'no-repeat'
+      }
     }
   },
   components: {
@@ -42,9 +47,6 @@ export default {
   position: relative;
   overflow: hidden;
   color: #fff;
-  background-image: url(./bg01.jpg);
-  background-size: 100%, 100px;
-  background-repeat: no-repeat;
   width: 100%;
   height: 100px;
 }
