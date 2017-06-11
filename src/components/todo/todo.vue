@@ -37,8 +37,7 @@ export default {
     return {
       msg: 'todos',
       value: '',
-      todos: Store.fetch('notebook-todo') || [],
-      init: [{'done': false, 'value': '吃饭'}, {'done': false, 'value': '睡觉'}, {'done': false, 'value': '写代码'}]
+      todos: Store.fetch('notebook-todo') || [{'done': false, 'value': '吃饭'}, {'done': false, 'value': '睡觉'}, {'done': false, 'value': '写代码'}]
     }
   },
   watch: {
@@ -63,9 +62,6 @@ export default {
     handleDone (todo) {
       todo.done = !todo.done
     }
-  },
-  created () {
-    Store.save('notebook-todo', this.init)
   }
 }
 </script>
