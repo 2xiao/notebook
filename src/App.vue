@@ -76,6 +76,7 @@ html, body, #app {
   color: #017d30;
 }
 .content {
+  overflow: scroll;
   position:absolute;
   top: 140px;
   left: 0;

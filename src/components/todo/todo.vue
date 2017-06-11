@@ -91,7 +91,7 @@ export default {
   height: 40px;
   color: white;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.5em;
   font-family: 'aileronthin';
 }
 #todo-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -116,7 +116,7 @@ export default {
   text-align: center;
   font-family: 'Times New Roman';
   line-height: 25px; 
-  font-size: 22px;
+  font-size: 2em;
   font-weight: bolder;
   border-radius: 15px 15px;
 }
@@ -131,7 +131,7 @@ export default {
   background: white;
   border-radius: 3px;
   font-family: 'aileronthin';
-  font-size: 1.1em;
+  font-size: 1.5em;
   margin: 12px 0px;
 }
 .todo {
@@ -139,7 +139,7 @@ export default {
   padding: 0, 24px;
   border-radius: 3px;
   font-family: 'aileronthin';
-  font-size: 1.07em;
+  font-size: 1.5em;
   margin: 12px 10px 0 10px;
   border-radius: 20px 20px 20px 20px;
   word-wrap: break-word;
@@ -155,8 +155,8 @@ export default {
 }
 .checkmark {
   border: 1px solid rgba(255 ,255 ,255, 0.4);
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 20px 20px 20px 20px;
   font-size: 0.9em;
   color: rgba(0,0,0,0);
