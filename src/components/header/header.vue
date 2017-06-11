@@ -3,8 +3,7 @@
     <div class="time">
       <span class="day">{{time.getDate()}}</span>
       <span class="week">{{aweek[time.getDay()]}}</span> 
-      <span class="year">{{month[time.getMonth()]}},&nbsp;{{time.getFullYear()}}</span>
-      
+      <span class="year">{{month[time.getMonth()]}},&nbsp;{{time.getFullYear()}}</span> 
     </div>
     <div class="content-wrapper"> 
       <v-weather :arr="arr"></v-weather>  
@@ -79,6 +78,6 @@ export default {
 
 .content-wrapper {
   float: right;
-  width: 40%;
+  width: 100px;
 }
 </style>

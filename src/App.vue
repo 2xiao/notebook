@@ -65,9 +65,9 @@
 .tab-item > a {
   display: block;
   font-size: 14px;
-  color: #42b983;
+  color: #071710;
 }
 .tab-item > a.router-link-active{
-  color: rgb(240, 20, 20)
+  color: #017d30;
 }
 </style>

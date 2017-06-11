@@ -1,26 +1,67 @@
 <template>
   <div class="container">
-    <div class="menu">
-      <menus :menuname='menuname'></menus>
-    </div>
-    <div class="content-container">
-      <item :menuname='menuname'></item>
+    <div class="row">
+      <h1 id="todo-header"> {{msg}} </h1>
+      <div class="input">
+        <input autofocus type="text" @keydown.enter.prevent="handleSubmit"
+        id="todo-input" placeholder="What to do today ?"
+        v-model="value">
+        <div v-if="value.length > 0" @click="handleSubmit" class="add-btn">
+          <i>+</i>
+        </div>
+      </div>
+      <div id="todos-list">
+        <ul>
+          <li v-for="todo in todos" v-bind:key="todo" class="todo">
+          <!-- container for the completed button -->
+            <div :class="['check-circle', {'check-circle-active': todo.done}]" @click="handleDone(todo)">
+            <div class="circle">
+              <div :class="['checkmark', {'checkmark-active': todo.done}]">&#10003;</div>
+            </div>            
+            <div :class="['text', {'text-done': todo.done}]">
+              {{todo.value}}
+            </div>                
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
+
 <script>
-import menus from './menu'
-import item from './item'
+import Store from '@/localstorage'
 export default {
   data () {
     return {
-      menuname: 'wuxx1'
+      msg: 'todos',
+      value: '',
+      todos: Store.fetch('notebook-todo') || []
     }
   },
-  components: {
-    item,
-    menus
+  watch: {
+    todos: {
+      handler: function (todos) {
+        Store.save('notebook-todo', todos)
+      },
+      deep: true
+    }
+  },
+  methods: {
+    handleSubmit () {
+      this.todos.unshift({
+        done: false,
+        value: this.value.trim()
+      })
+      if (this.todos.length > 15) {
+        this.todos.pop()
+      }
+      this.value = ''
+    },
+    handleDone (todo) {
+      todo.done = !todo.done
+    }
   }
 }
 </script>
@@ -28,21 +69,111 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
+  color: black;
+  background: linear-gradient(to bottom, rgba(72, 157, 197, 0.57) 0%,#b5e2ec 100%);
+  width: 100%; 
+}
+#todo-header {
+  font-size: 3em;
+  color: rgba(255,255,255, 1);
+  padding-top: 3px;
+  font-weight: 100;
+}
+.input{
   display: flex;
-  position: absolute;
-  top: 140px;
-  bottom: 0px;
-  width: 100%;
-  overflow: hidden;
+}
+#todo-input {
+  width: 75%;
+  margin:0 15px 0 10%;
+  outline:none;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255, 0.6);
+  height: 40px;
+  color: white;
   text-align: center;
+  font-size: 1em;
+  font-family: 'aileronthin';
+}
+#todo-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255,255,255, 0.4);
+}
+#todo-input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255,255,255, 0.4);
+}
+#todo-input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255,255,255, 0.4);
+}
+#todo-input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255,255,255, 0.4);
+}
+.add-btn {
+  margin-top: 12px;
+  font-style: normal; 
+  width: 25px;
+  height: 25px;
+  color:rgba(0, 111, 111, 0.5);
+  background: rgba(255,255,255, 0.6);
+  text-align: center;
+  font-family: 'Times New Roman';
+  line-height: 25px; 
+  font-size: 22px;
+  font-weight: bolder;
+  border-radius: 15px 15px;
+}
+
+#todos-list ul {
+  display: block;
+  list-style-type: none;
+  padding: 0px;
+}
+#todo-item {
+  padding: 24px 24px 24px 75px;
+  background: white;
+  border-radius: 3px;
+  font-family: 'aileronthin';
+  font-size: 1.1em;
+  margin: 12px 0px;
+}
+.todo {
+  /*margin-top: 24px;*/
+  padding: 0, 24px;
+  border-radius: 3px;
+  font-family: 'aileronthin';
+  font-size: 1.07em;
+  margin: 12px 10px 0 10px;
+  border-radius: 20px 20px 20px 20px;
+  word-wrap: break-word;
+  width: 100%;
+}
+.check-circle {
+  display: flex;
+}
+.circle{
+  padding-left:10%;
+  margin: 0 auot;
+  width: 20%;
+}
+.checkmark {
+  border: 1px solid rgba(255 ,255 ,255, 0.4);
+  width: 20px;
+  height: 20px;
+  border-radius: 20px 20px 20px 20px;
+  font-size: 0.9em;
+  color: rgba(0,0,0,0);
+}
+
+.checkmark-active {
+  border-color: #017d30;
+  color: #017d30;
+}
+.text {
+  width: 70%;
   text-align: left;
+  color: white;
 }
-.menu {
-  background: linear-gradient(to bottom, #e4e8e7, #b1b5b3 100%);
-  flex: 0 0 80px;
-  width: 80px;
-}
-.content-container {
-  flex: 1
+.text-done {
+  color: #017d30;
+  text-decoration: line-through;
 }
 </style>
