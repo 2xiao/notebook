@@ -22,16 +22,11 @@
 </template>
 
 <script>
-  import Weather from 'components/header/getWeather'
   import header from 'components/header/header'
   export default {
     name: 'app',
     components: {
       'v-header': header
-    },
-    created () {
-      Weather.getAsyncScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js').then(function () {
-      })
     }
   }
 </script>
@@ -72,7 +67,7 @@ html, body, #app {
   font-size: 14px;
   color: #071710;
 }
-.tab-item > a.router-link-active{
+.tab-item > a.router-link-exact-active{
   color: #017d30;
 }
 .content {
