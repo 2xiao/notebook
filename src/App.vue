@@ -3,7 +3,7 @@
     <v-header></v-header>
     <div class="tab">
       <div class="tab-item">
-        <router-link to="/todo">待办</router-link>
+        <router-link to="/">待办</router-link>
       </div>
       <div class="tab-item">
         <router-link to="/fit">健康</router-link>

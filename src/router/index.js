@@ -9,7 +9,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/todo',
+    { path: '/',
       component: todo
     },
     { path: '/fit', component: fit },
