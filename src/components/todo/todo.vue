@@ -70,7 +70,6 @@ export default {
 <style scoped>
 .container {
   color: black;
-  background: linear-gradient(to bottom, rgba(72, 157, 197, 0.57) 0%,#b5e2ec 100%);
   width: 100%; 
 }
 #todo-header {

@@ -15,7 +15,9 @@
         <router-link to="/pro">项目</router-link>
       </div>
     </div>
-    <router-view></router-view>
+    <div class="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -35,6 +37,10 @@
 </script>
 
 <style>
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -54,7 +60,6 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
   border-top: 1px solid rgba(7, 17, 27, 0.1);
   content: ' ';
 }
@@ -69,5 +74,10 @@
 }
 .tab-item > a.router-link-active{
   color: #017d30;
+}
+.content {
+  top: 100px;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(72, 157, 197, 0.57) 0%,#b5e2ec 100%);
 }
 </style>
