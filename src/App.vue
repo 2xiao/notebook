@@ -76,7 +76,10 @@ html, body, #app {
   color: #017d30;
 }
 .content {
-  top: 100px;
+  position:absolute;
+  top: 140px;
+  left: 0;
+  right: 0;
   bottom: 0;
   background: linear-gradient(to bottom, rgba(72, 157, 197, 0.57) 0%,#b5e2ec 100%);
 }
