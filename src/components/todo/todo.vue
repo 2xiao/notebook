@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="row">
-      <h1 id="todo-header"> {{msg}} </h1>
       <div class="input">
         <input autofocus type="text" @keydown.enter.prevent="handleSubmit"
         id="todo-input" placeholder="What to do today ?"
@@ -35,7 +34,6 @@ import Store from '@/localstorage'
 export default {
   data () {
     return {
-      msg: 'todos',
       value: '',
       todos: Store.fetch('notebook-todo') || [{'done': false, 'value': '吃饭'}, {'done': false, 'value': '睡觉'}, {'done': false, 'value': '写代码'}]
     }
@@ -83,7 +81,7 @@ export default {
 }
 #todo-input {
   width: 75%;
-  margin:0 15px 0 10%;
+  margin:20px 15px 20px 10%;
   outline:none;
   background: none;
   border: none;
@@ -107,7 +105,7 @@ export default {
   color: rgba(255,255,255, 0.4);
 }
 .add-btn {
-  margin-top: 12px;
+  margin-top: 25px;
   font-style: normal; 
   width: 25px;
   height: 25px;

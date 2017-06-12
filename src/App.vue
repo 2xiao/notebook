@@ -3,16 +3,16 @@
     <v-header></v-header>
     <div class="tab">
       <div class="tab-item">
-        <router-link to="/">待办</router-link>
+        <router-link to="/"><span class="emoji">📝</span><span class="tabTag">Todo</span></router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/fit">健康</router-link>
+        <router-link to="/fit"><span class="emoji">💪</span><span class="tabTag">Fit</span></router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/money">账本</router-link>
+        <router-link to="/money"><span class="emoji">💰</span><span class="tabTag">Money</span></router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/pro">项目</router-link>
+        <router-link to="/pro"><span class="emoji">🐽</span><span class="tabTag">Pro</span></router-link>
       </div>
     </div>
     <div class="content">
@@ -31,7 +31,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 html, body, #app {
   height: 100%;
   width: 100%;
@@ -60,11 +60,21 @@ html, body, #app {
 }
 .tab-item {
   flex: 1;
-  text-align: center
+  text-align: center;
+}
+.emoji {
+  display: block;
+  font-size: 1.1em;
+  line-height: 30px;
+}
+.tabTag {
+  margin-top: -2px;
+  display: block;
+  font-size: 0.8em;
+  font-weight: normal;
+  line-height: 10px;
 }
 .tab-item > a {
-  display: block;
-  font-size: 14px;
   color: #071710;
 }
 .tab-item > a.router-link-exact-active{

@@ -78,6 +78,6 @@ export default {
 
 .content-wrapper {
   float: right;
-  width: 100px;
+  width: 130px;
 }
 </style>
