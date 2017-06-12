@@ -30,7 +30,7 @@
           <button @click="demo(1,9)">9</button>
         </div>
         <div class="detail-line">
-          <button @click="demo(2,null)"><</button>
+          <button @click="demo(2,null)">C</button>
           <button @click="demo(1,0)">0</button>
           <button @click="demo(3,null)">.</button>
         </div>
@@ -122,7 +122,7 @@ export default {
           this.newWeight = this.newWeight + value.toString()
         }
       } else if (tip === 2) {
-        this.newWeight = this.newWeight.slice(0, this.newWeight.length - 1)
+        this.newWeight = ''
       } else if (tip === 3) {
         if (this.newWeight.indexOf('.') === -1) {
           this.newWeight = this.newWeight + '.'
@@ -211,6 +211,9 @@ button {
   font-size: 26px;
   padding-top: 10px;
   color: rgba(255,255,255, 0.7);
+  background-color: transparent;
+  border-style: none;
+  outline:none;
 }
 button:hover {
   color: rgba(255,255,255, 1);
