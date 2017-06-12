@@ -1,29 +1,27 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="input">
-        <input autofocus type="text" @keydown.enter.prevent="handleSubmit"
-        id="todo-input" placeholder="What to do today ?"
-        v-model="value">
-        <div v-if="value.length > 0" @click="handleSubmit" class="add-btn">
-          <i>+</i>
-        </div>
+    <div class="input">
+      <input autofocus type="text" @keydown.enter.prevent="handleSubmit"
+      id="todo-input" placeholder="What to do today ?"
+      v-model="value">
+      <div v-if="value.length > 0" @click="handleSubmit" class="add-btn">
+        <i>+</i>
       </div>
-      <div id="todos-list">
-        <ul>
-          <li v-for="todo in todos" v-bind:key="todo" class="todo">
-          <!-- container for the completed button -->
-            <div :class="['check-circle', {'check-circle-active': todo.done}]" @click="handleDone(todo)">
-            <div class="circle">
-              <div :class="['checkmark', {'checkmark-active': todo.done}]">&#10003;</div>
-            </div>            
-            <div :class="['text', {'text-done': todo.done}]">
-              {{todo.value}}
-            </div>                
-            </div>
-          </li>
-        </ul>
-      </div>
+    </div>
+    <div id="todos-list">
+      <ul>
+        <li v-for="todo in todos" v-bind:key="todo" class="todo">
+        <!-- container for the completed button -->
+          <div :class="['check-circle', {'check-circle-active': todo.done}]" @click="handleDone(todo)">
+          <div class="circle">
+            <div :class="['checkmark', {'checkmark-active': todo.done}]">&#10003;</div>
+          </div>            
+          <div :class="['text', {'text-done': todo.done}]">
+            {{todo.value}}
+          </div>                
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

@@ -64,21 +64,22 @@ html, body, #app {
 }
 .emoji {
   display: block;
-  font-size: 1.1em;
+  font-size: 0.9em;
   line-height: 30px;
 }
 .tabTag {
   margin-top: -2px;
   display: block;
-  font-size: 0.8em;
-  font-weight: normal;
+  font-size: 0.9em;
   line-height: 10px;
 }
-.tab-item > a {
+.tab-item > a span{
   color: #071710;
+  font-weight: normal;
 }
-.tab-item > a.router-link-exact-active{
+.tab-item > a.router-link-exact-active span{
   color: #017d30;
+  font-weight: bold;
 }
 .content {
   overflow-y: auto;

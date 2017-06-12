@@ -29,7 +29,10 @@ export default {
   },
   data () {
     return {
-      arr: {},
+      arr: {
+        weat: '晴',
+        temp: 0
+      },
       bgimage: {
         backgroundImage: 'url(' + require('components/header/bg01.jpg') + ')',
         backgroundSize: '100%, 100px',

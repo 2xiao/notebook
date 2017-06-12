@@ -1,10 +1,43 @@
 <template>
   <div class="container">
     <div class="row">
-      <h1 id="todo-header"> {{msg}} </h1>
+      <div @click="showDetail" class="add-btn">
+        <i>+</i>
+      </div>
     </div>
     <div class="chart">
         <div id="myChart" style="width: 100%; height:400px;"></div>
+    </div>
+    <div v-show="detailShow" class="detail" transition="fade">
+      <div class="detail-main">
+        <div class="name">记录体重：&nbsp;&nbsp;{{newWeight}} &nbsp;&nbsp;斤</div>
+        <i class="detail-add" @click="hideDetail">+</i>
+      </div>
+      <div class="detail-input">
+        <div class="detail-line">
+          <button @click="demo(1,1)">1</button>
+          <button @click="demo(1,2)">2</button>
+          <button @click="demo(1,3)">3</button>
+        </div>
+        <div class="detail-line">
+          <button @click="demo(1,4)">4</button>
+          <button @click="demo(1,5)">5</button>
+          <button @click="demo(1,6)">6</button>
+        </div>
+        <div class="detail-line">
+          <button @click="demo(1,7)">7</button>
+          <button @click="demo(1,8)">8</button>
+          <button @click="demo(1,9)">9</button>
+        </div>
+        <div class="detail-line">
+          <button @click="demo(2,null)"><</button>
+          <button @click="demo(1,0)">0</button>
+          <button @click="demo(3,null)">.</button>
+        </div>
+      </div>
+      <div class="detail-close" @click="hideDetail">
+        <i class="icon-close">×</i>
+      </div>
     </div>
   </div>
 </template>
@@ -16,26 +49,18 @@ export default {
       msg: 'fit',
         // 初始化空对象
       chart: null,
+      detailShow: false,
+      newWeight: '',
+      inputValue: 0,
       option: {
-        title: {
-          text: '未来一周气温变化',
-          subtext: '纯属虚构'
-        },
         tooltip: {
           trigger: 'axis'
-        },
-        legend: {
-          data: ['最高气温']
         },
         toolbox: {
           show: true,
           feature: {
-            dataZoom: {
-              yAxisIndex: 'none'
-            },
             dataView: {readOnly: false},
             magicType: {type: ['line', 'bar']},
-            restore: {},
             saveAsImage: {}
           }
         },
@@ -69,116 +94,146 @@ export default {
             }
           }
         ]
-      },
-      media: [
-        {
-          option: {
-            legend: {
-              right: 'center',
-              bottom: 0,
-              orient: 'horizontal'
-            },
-            series: [
-              {
-                radius: [20, '50%'],
-                center: ['25%', '50%']
-              },
-              {
-                radius: [30, '50%'],
-                center: ['75%', '50%']
-              }
-            ]
-          }
-        },
-        {
-          query: {
-            minAspectRatio: 1
-          },
-          option: {
-            legend: {
-              right: 'center',
-              bottom: 0,
-              orient: 'horizontal'
-            },
-            series: [
-              {
-                radius: [20, '50%'],
-                center: ['25%', '50%']
-              },
-              {
-                radius: [30, '50%'],
-                center: ['75%', '50%']
-              }
-            ]
-          }
-        },
-        {
-          query: {
-            maxAspectRatio: 1
-          },
-          option: {
-            legend: {
-              right: 'center',
-              bottom: 0,
-              orient: 'horizontal'
-            },
-            series: [
-              {
-                radius: [20, '50%'],
-                center: ['50%', '30%']
-              },
-              {
-                radius: [30, '50%'],
-                center: ['50%', '70%']
-              }
-            ]
-          }
-        },
-        {
-          query: {
-            maxWidth: 500
-          },
-          option: {
-            legend: {
-              right: 10,
-              top: '15%',
-              orient: 'vertical'
-            },
-            series: [
-              {
-                radius: [20, '50%'],
-                center: ['50%', '30%']
-              },
-              {
-                radius: [30, '50%'],
-                center: ['50%', '75%']
-              }
-            ]
-          }
-        }
-      ]
+      }
     }
   },
   mounted () {
     let myChart = this.$echarts.init(document.getElementById('myChart'))
     myChart.setOption(this.option)
+  },
+  watch: {
+    newWeight: {
+      handler: function (newWeight) {
+      },
+      deep: true
+    }
+  },
+  methods: {
+    showDetail () {
+      this.detailShow = true
+    },
+    hideDetail () {
+      this.detailShow = false
+      this.newWeight = ''
+    },
+    demo (tip, value) {
+      if (tip === 1) {
+        if ((value !== 0 || this.newWeight.length !== 0) && this.newWeight.indexOf('.') !== this.newWeight.length - 4) {
+          this.newWeight = this.newWeight + value.toString()
+        }
+      } else if (tip === 2) {
+        this.newWeight = this.newWeight.slice(0, this.newWeight.length - 1)
+      } else if (tip === 3) {
+        if (this.newWeight.indexOf('.') === -1) {
+          this.newWeight = this.newWeight + '.'
+        }
+      }
+    }
   }
 }
-</script> 
+</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
   color: black;
-  width: 100%; 
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
 }
-#todo-header {
+.add-btn {
+  margin: 20px 15px 0 0;
+  float: right;
+  font-style: normal; 
+  width: 40px;
+  height: 40px;
+  color:rgba(0, 111, 111, 0.5);
+  background: rgba(255,255,255, 0.6);
+  text-align: center;
+  font-family: 'Times New Roman';
+  line-height: 40px; 
   font-size: 3em;
-  color: rgba(255,255,255, 1);
-  padding-top: 3px;
-  font-weight: 100;
+  font-weight: bolder;
+  border-radius: 20px 20px;
 }
 .chart {
   overflow-x: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.detail {
+  position: relative;
+  color: #fff;
+  background: rgba(7, 17, 27, 0.6);
+  width: 100%;
+  min-height: 6000px;
+}
+.detail-main {
+  height: 100px;
+  line-height: 100px;
+  width: 100%;
+}
+.name {
+  float: left;
+  width: 80%;
+  font-size: 20px;
+  text-align: center;
+}
+.detail-add {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  font-style: normal; 
+  width: 40px;
+  height: 40px;
+  color:rgba(7, 17, 27, 0.5);
+  background: rgba(255,255,255, 0.8);
+  font-family: 'Times New Roman';
+  line-height: 40px; 
+  font-size: 3em;
+  font-weight: bolder;
+  border-radius: 20px 20px;
+}
+.detail-input {
+  width: 100%;
+  height: 50%;
+}
+.detail-line{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+button {
+  float: left;
+  display: block;
+  flex: 33%;
+  font-size: 26px;
+  padding-top: 10px;
+  color: rgba(255,255,255, 0.7);
+}
+button:hover {
+  color: rgba(255,255,255, 1);
+}
+.detail-close {
+  clear: both;
+  font-size: 32px;
+}
+.icon-close {
+  margin: 0 auto;
+  margin-top: 20%;
+  margin-left: 45%;
+  float: left;
+  font-style: normal; 
+  width: 40px;
+  height: 40px;
+  color:rgba(7, 17, 27, 0.5);
+  background: rgba(255,255,255, 0.8);
+  text-align: center;
+  font-family: 'Times New Roman';
+  line-height: 40px; 
+  font-size: 1.5em;
+  font-weight: bolder;
+  border-radius: 20px 20px;
 }
 </style>
