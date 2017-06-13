@@ -3,6 +3,7 @@
     <div class="row">
       <div @click="showDetail" class="add-btn">
         <i>+</i>
+        <span>{{inputValue}}</span>
       </div>
     </div>
     <div class="chart">
@@ -11,7 +12,7 @@
     <div v-show="detailShow" class="detail" transition="fade">
       <div class="detail-main">
         <div class="name">记录体重：&nbsp;&nbsp;{{newWeight}} &nbsp;&nbsp;斤</div>
-        <i class="detail-add" @click="hideDetail">+</i>
+        <i class="detail-add" @click="addWeight">+</i>
       </div>
       <div class="detail-input">
         <div class="detail-line">
@@ -52,6 +53,8 @@ export default {
       detailShow: false,
       newWeight: '',
       inputValue: 0,
+      dataX: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      dataY: [11, 11, 15, 13, 12, 13, 10],
       option: {
         tooltip: {
           trigger: 'axis'
@@ -103,8 +106,6 @@ export default {
   },
   watch: {
     newWeight: {
-      handler: function (newWeight) {
-      },
       deep: true
     }
   },
@@ -113,6 +114,11 @@ export default {
       this.detailShow = true
     },
     hideDetail () {
+      this.detailShow = false
+      this.newWeight = ''
+    },
+    addWeight () {
+      this.inputValue = parseFloat(this.newWeight)
       this.detailShow = false
       this.newWeight = ''
     },
@@ -209,7 +215,7 @@ button {
   display: block;
   flex: 33%;
   font-size: 26px;
-  padding-top: 10px;
+  padding-top: 20px;
   color: rgba(255,255,255, 0.7);
   background-color: transparent;
   border-style: none;
@@ -224,7 +230,7 @@ button:hover {
 }
 .icon-close {
   margin: 0 auto;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-left: 45%;
   float: left;
   font-style: normal; 
