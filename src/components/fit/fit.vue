@@ -3,7 +3,6 @@
     <div class="row">
       <div @click="showDetail" class="add-btn">
         <i>+</i>
-        <span>{{inputValue}}</span>
       </div>
     </div>
     <div class="chart">
@@ -44,62 +43,59 @@
 </template>
 
 <script>
+import Store from '@/localstorage'
+var myChart
 export default {
   data () {
     return {
       msg: 'fit',
-        // 初始化空对象
       chart: null,
       detailShow: false,
       newWeight: '',
       inputValue: 0,
-      dataX: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-      dataY: [11, 11, 15, 13, 12, 13, 10],
+      day: [new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()].join('/'),
+      weight: Store.fetch('notebook-fit') || [],
       option: {
         tooltip: {
           trigger: 'axis'
         },
         xAxis: {
-          type: 'category',
+          type: 'time',
           boundaryGap: false,
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          splitLine: {
+            show: false
+          }
         },
         yAxis: {
           type: 'value',
-          show: false,
-          axisLabel: {
-            formatter: '{value} °C'
+          boundaryGap: [0, '100%'],
+          splitLine: {
+            show: false
           }
         },
-        series: [
-          {
-            name: '最高气温',
-            type: 'line',
-            data: [11, 11, 15, 13, 12, 13, 10],
-            markPoint: {
-              data: [
-                {type: 'max', name: '最大值'},
-                {type: 'min', name: '最小值'}
-              ]
-            },
-            markLine: {
-              data: [
-                {type: 'average', name: '平均值'}
-              ]
-            }
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          hoverAnimation: false,
+          data: this.weight,
+          markPoint: {
+            data: [
+              {type: 'max', name: '最大值'},
+              {type: 'min', name: '最小值'}
+            ]
           }
-        ]
+        }]
       }
     }
   },
   mounted () {
-    let myChart = this.$echarts.init(document.getElementById('myChart'))
+    myChart = this.$echarts.init(document.getElementById('myChart'))
     myChart.setOption(this.option)
-  },
-  watch: {
-    newWeight: {
-      deep: true
-    }
+    myChart.setOption({
+      series: [{
+        data: this.weight
+      }]
+    })
   },
   methods: {
     showDetail () {
@@ -110,7 +106,16 @@ export default {
       this.newWeight = ''
     },
     addWeight () {
+      if (this.weight.length > 0 && this.weight[this.weight.length - 1][0] === this.day) {
+        this.weight.shift()
+      }
       this.inputValue = parseFloat(this.newWeight)
+      this.weight.push([this.day, this.inputValue])
+      myChart.setOption({
+        series: [{
+          data: this.weight
+        }]
+      })
       this.detailShow = false
       this.newWeight = ''
     },
@@ -126,6 +131,14 @@ export default {
           this.newWeight = this.newWeight + '.'
         }
       }
+    }
+  },
+  watch: {
+    weight: {
+      handler: function (weight) {
+        Store.save('notebook-fit', weight)
+      },
+      deep: true
     }
   }
 }

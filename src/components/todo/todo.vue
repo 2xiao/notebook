@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       value: '',
-      todos: Store.fetch('notebook-todo') || [{'done': false, 'value': '吃饭'}, {'done': false, 'value': '睡觉'}, {'done': false, 'value': '写代码'}]
+      todos: Store.fetch('notebook-todo') || []
     }
   },
   watch: {
