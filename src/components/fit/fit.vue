@@ -106,18 +106,23 @@ export default {
       this.newWeight = ''
     },
     addWeight () {
-      if (this.weight.length > 0 && this.weight[this.weight.length - 1][0] === this.day) {
-        this.weight.shift()
-      }
       this.inputValue = parseFloat(this.newWeight)
-      this.weight.push([this.day, this.inputValue])
-      myChart.setOption({
-        series: [{
-          data: this.weight
-        }]
-      })
-      this.detailShow = false
-      this.newWeight = ''
+      if (isNaN(this.inputValue)) {
+        this.detailShow = false
+        this.newWeight = ''
+      } else {
+        if (this.weight.length > 0 && this.weight[this.weight.length - 1][0] === this.day) {
+          this.weight.shift()
+        }
+        this.weight.push([this.day, this.inputValue])
+        myChart.setOption({
+          series: [{
+            data: this.weight
+          }]
+        })
+        this.detailShow = false
+        this.newWeight = ''
+      }
     },
     demo (tip, value) {
       if (tip === 1) {
