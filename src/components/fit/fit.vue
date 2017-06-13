@@ -59,14 +59,6 @@ export default {
         tooltip: {
           trigger: 'axis'
         },
-        toolbox: {
-          show: true,
-          feature: {
-            dataView: {readOnly: false},
-            magicType: {type: ['line', 'bar']},
-            saveAsImage: {}
-          }
-        },
         xAxis: {
           type: 'category',
           boundaryGap: false,
