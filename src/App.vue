@@ -3,16 +3,16 @@
     <v-header></v-header>
     <div class="tab">
       <div class="tab-item">
-        <router-link to="/"><span class="emoji">📝</span><span class="tabTag">Todo</span></router-link>
+        <router-link to="/">Todo</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/fit"><span class="emoji">💪</span><span class="tabTag">Fit</span></router-link>
+        <router-link to="/fit">Fit</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/money"><span class="emoji">💰</span><span class="tabTag">Money</span></router-link>
+        <router-link to="/money">Money</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/pro"><span class="emoji">🐽</span><span class="tabTag">Pro</span></router-link>
+        <router-link to="/pro">Pro</router-link>
       </div>
     </div>
     <div class="content">
@@ -62,22 +62,13 @@ html, body, #app {
   flex: 1;
   text-align: center;
 }
-.emoji {
-  display: block;
-  font-size: 0.9em;
-  line-height: 30px;
-}
-.tabTag {
-  margin-top: -2px;
-  display: block;
+.tab-item > a {
   font-size: 0.9em;
   line-height: 10px;
-}
-.tab-item > a span{
   color: #071710;
   font-weight: normal;
 }
-.tab-item > a.router-link-exact-active span{
+.tab-item > a.router-link-exact-active {
   color: #017d30;
   font-weight: bold;
 }
@@ -89,6 +80,6 @@ html, body, #app {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(72, 157, 197, 0.57) 0%,#b5e2ec 100%);
+  background: linear-gradient(to bottom, #6ca6c3 0%,#b5e2ec 100%);
 }
 </style>
