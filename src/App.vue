@@ -69,7 +69,7 @@ html, body, #app {
   font-weight: normal;
 }
 .tab-item > a.router-link-exact-active {
-  color: #017d30;
+  color: #0276b1;
   font-weight: bold;
 }
 .content {

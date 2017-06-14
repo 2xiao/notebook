@@ -1,16 +1,16 @@
 <template>
   <div class="container">
+    <div class="chart">
+        <div id="myChart" style="width: 100%; height:400px;"></div>
+    </div>
     <div class="row">
       <div @click="showDetail" class="add-btn">
         <i>+</i>
       </div>
     </div>
-    <div class="chart">
-        <div id="myChart" style="width: 100%; height:400px;"></div>
-    </div>
     <div v-show="detailShow" class="detail" transition="fade">
       <div class="detail-main">
-        <input class="input" size="11" type="text" v-model="calendar.items.text" @click.stop="open($event)" placeholder="请选择日期…" />
+        <input class="input" readonly="readonly" size="11" type="text" v-model="calendar.items.text" @click.stop="open($event)" placeholder="请选择日期…" />
         <Calendar :show="calendar.show" :type="calendar.items.type" :value="calendar.items.value" :x="calendar.x" :y="calendar.y"
             :begin="calendar.items.begin" @cancel="dateCancel" @ok="dateOk" :end="calendar.items.end" :sep="calendar.items.sep"
             :single="calendar.items.single" :rangeValue='calendar.items.rangeValue' :autoclose='calendar.items.autoclose'>
@@ -51,21 +51,6 @@
 import Store from '@/localstorage'
 import Calendar from './calendar'
 var myChart
-// function quickSort (arr) {
-//   if (arr.length <= 1) { return arr }
-//   let pivotIndex = Math.floor(arr.length / 2)
-//   let pivot = arr.splice(pivotIndex, 1)[0]
-//   let left = []
-//   let right = []
-//   for (let i = 0; i < arr.length; i++) {
-//     if (Number(arr[i][0].split('/').join('')) <= Number(pivot[0].split('/').join(''))) {
-//       left.push(arr[i])
-//     } else {
-//       right.push(arr[i])
-//     }
-//   }
-//   return quickSort(left).concat([pivot], quickSort(right))
-// }
 export default {
   components: {
     Calendar
@@ -96,28 +81,59 @@ export default {
         }
       },
       option: {
+        title: {
+          text: '自律给我自由',
+          textStyle: {
+            color: '#FFF',
+            fontSize: 31
+          },
+          subtext: '记录一下今天的体重吧',
+          subtextStyle: {
+            fontSize: 18,
+            color: '#0276b1'
+          },
+          textAlign: 'left',
+          padding: [0, 0, 0, 20]
+        },
         tooltip: {
           trigger: 'axis'
         },
         xAxis: {
+          show: false,
           type: 'time',
-          // boundaryGap: false,
-          nameTextStyle: {color: 'rgba(128, 128, 128, 0.5)'},
           splitLine: {
             show: false
           }
         },
         yAxis: {
+          show: false,
           type: 'value',
-          boundaryGap: [0, '100%'],
+          min: 'dataMin',
           splitLine: {
             show: false
           }
         },
+        dataZoom: [{
+          type: 'inside',
+          start: 0,
+          end: 10
+        }, {
+          start: 0,
+          end: 10,
+          handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+          handleSize: '80%',
+          handleStyle: {
+            color: '#fff',
+            shadowBlur: 3,
+            shadowColor: 'rgba(0, 0, 0, 0.6)',
+            shadowOffsetX: 2,
+            shadowOffsetY: 2
+          }
+        }],
         series: [{
           type: 'line',
-          showSymbol: false,
-          hoverAnimation: false,
+          symbolSize: 10,
+          hoverAnimation: true,
           data: this.weight,
           markPoint: {
             data: [
@@ -214,7 +230,7 @@ export default {
   overflow-y: hidden;
 }
 .add-btn {
-  margin: 20px 15px 0 0;
+  margin: 20px 20px 0 0;
   float: right;
   font-style: normal; 
   width: 40px;
@@ -231,7 +247,7 @@ export default {
 .chart {
   overflow-x: hidden;
   position: absolute;
-  bottom: 0;
+  top: 50px;
   left: 0;
   right: 0;
 }
@@ -259,7 +275,7 @@ export default {
 .detail-add {
   position: absolute;
   top: 20px;
-  right: 15px;
+  right: 20px;
   font-style: normal; 
   width: 40px;
   height: 40px;
@@ -292,7 +308,7 @@ button {
   outline:none;
 }
 button:hover {
-  color: rgba(255,255,255, 1);
+  color: #0276b1;
 }
 .detail-close {
   clear: both;

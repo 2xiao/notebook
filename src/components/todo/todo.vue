@@ -159,8 +159,8 @@ export default {
 }
 
 .checkmark-active {
-  border-color: #017d30;
-  color: #017d30;
+  border-color: #0276b1;
+  color: #0276b1;
 }
 .text {
   width: 70%;
@@ -168,7 +168,7 @@ export default {
   color: white;
 }
 .text-done {
-  color: #017d30;
+  color: #0276b1;
   text-decoration: line-through;
 }
 </style>
