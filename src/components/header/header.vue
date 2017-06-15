@@ -60,6 +60,7 @@ export default {
   float: left;
   width: 55%;
   margin-top: 20px;
+  margin-left: 5px;
 }
 
 .time span {
@@ -71,9 +72,9 @@ export default {
   float: left;
   font-size: 4em;
   margin-right: 10px;
+  margin-top: -12px;
 }
 .week {
-  margin-top: 10px;
   font-size: 1.3em;
   font-weight: 700;
   padding-bottom: 5px;

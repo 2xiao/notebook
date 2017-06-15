@@ -63,9 +63,9 @@ html, body, #app {
   text-align: center;
 }
 .tab-item > a {
-  font-size: 0.9em;
+  font-size: 1.1em;
   line-height: 10px;
-  color: #071710;
+  color: #6ca6c3;
   font-weight: normal;
 }
 .tab-item > a.router-link-exact-active {

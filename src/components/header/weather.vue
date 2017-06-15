@@ -32,7 +32,7 @@ margin: 0 auto;
   float:right;
   width:60px;
   margin: 0 auto;
-  padding: 10px 10px 0 20px;
+  padding: 5px 10px 0 20px;
 }
 
 .temp {

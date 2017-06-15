@@ -135,7 +135,7 @@ export default {
   padding: 0, 24px;
   border-radius: 3px;
   font-family: 'aileronthin';
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin: 12px 10px 0 10px;
   border-radius: 20px 20px 20px 20px;
   word-wrap: break-word;

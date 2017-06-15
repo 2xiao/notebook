@@ -1,7 +1,9 @@
 <style scoped>
 .calendar {
-  width: 300px;
-  padding: 10px;
+  width: 80%;
+  margin-top: 28px;
+  margin-left: 4%;
+  padding: 12px;
   background: #f3f8fa;
   position: absolute;
   border: 1px solid #DEDEDE;
