@@ -4,9 +4,9 @@ A nootbook SPA by Vue, you can use it to build a todo list, record your weight a
 
 Have a try:  [http://xxwu.tech/notebook/](http://xxwu.tech/notebook/)
 
-![](https://ws4.sinaimg.cn/large/006tNc79ly1fgmddok8uwj30ku112an5.jpg)
+![](https://github.com/SmartDoubleXiao/notebook/blob/master/static/todo.PNG)
 
-![](https://ws2.sinaimg.cn/large/006tNc79ly1fgmddftyczj30ku1124cl.jpg)
+![](https://github.com/SmartDoubleXiao/notebook/blob/master/static/fit.PNG)
 
 ## Build Setup
 
@@ -41,7 +41,7 @@ npm run build --report
   - 要注意的地方：
     - 回调函数中this指向问题，返回数据时要更改
     - 跨域的方式
-    -  [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) 只能在开发环境实现跨域，打包后就不可以了
+    - [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) 只能在开发环境实现跨域，打包后就不可以了
     - axios是不错的选择
 
 - 体重模块
