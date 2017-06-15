@@ -2,7 +2,7 @@
 
 A nootbook SPA by Vue, you can use it to build a todo list, record your weight and record your expenses and earnings, you can also manage project with it.
 
-Have a try:  [http://xxwu.tech/notebook/](http://xxwu.tech/notebook/)
+Have a try:  [http://xxwu.tech/notebook/](http://xxwu.tech/notebook/#/)
 
 ![](https://github.com/SmartDoubleXiao/notebook/blob/master/static/todo.PNG)
 
