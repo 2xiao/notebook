@@ -12,7 +12,7 @@ Have a try:  [http://xxwu.tech/notebook/](http://xxwu.tech/notebook/#/)
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8000
 npm run dev
 
 # build for production with minification
