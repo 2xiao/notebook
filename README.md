@@ -50,9 +50,9 @@ npm run build --report
 
 ```
 myChart.setOption({
-	series: [{
-		data: this.weight.sort()
-	}]
+  series: [{
+    data: this.weight.sort()
+  }]
 })
 ```
 
