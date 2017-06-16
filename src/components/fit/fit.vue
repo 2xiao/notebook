@@ -3,7 +3,7 @@
     <div class="chart">
         <div id="myChart" style="width: 100%; height:100%;"></div>
     </div>
-    <div class="row">
+    <div>
       <div @click="showDetail" class="add-btn">
         <i>+</i>
       </div>
@@ -63,8 +63,6 @@ export default {
   },
   data () {
     return {
-      msg: 'fit',
-      chart: null,
       detailShow: false,
       newWeight: '',
       inputValue: 0,
@@ -289,10 +287,10 @@ export default {
 }
 .chart {
   width: 100%;
-  height: 80%;
+  height: 85%;
   overflow-x: hidden;
   position: absolute;
-  bottom: 10px;
+  top: 15%;
   left: 0;
   right: 0;
 }
@@ -357,7 +355,7 @@ button {
   display: block;
   flex: 33%;
   font-size: 26px;
-  padding-top: 20px;
+  padding-top: 10%;
   color: rgba(255,255,255, 1);
   background-color: transparent;
   border-style: none;
@@ -389,8 +387,8 @@ button:hover {
 }
 .calendarBtn{
   position: absolute;
-  top: 1px;
-  left: 10px;
+  top: 8px;
+  left: 12px;
   height: 40px;
   font-style: normal; 
   border-radius: 2px;

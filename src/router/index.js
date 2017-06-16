@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import todo from 'components/todo/todo'
 import fit from 'components/fit/fit'
 import money from 'components/money/money'
-import pro from 'components/pro/pro'
+import weibo from 'components/weibo/weibo'
 
 Vue.use(Router)
 
@@ -14,7 +14,7 @@ export default new Router({
     },
     { path: '/fit', component: fit },
     { path: '/money', component: money },
-    { path: '/pro', component: pro }
+    { path: '/weibo', component: weibo }
   ]
 })
 

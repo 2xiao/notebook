@@ -2,6 +2,7 @@
   <div class="container">
     <div class="chart">
         <div id="myChart" style="width: 100%; height: 100%;"></div>
+        <div id="myChart2" style="width: 100%; height: 100%;"></div>
     </div>
     <div class="row">
       <div class="title leftTitle"><span>当月收入</span><br>{{totalEraning}}.00</div>
@@ -10,82 +11,27 @@
       </div>
       <div class="title rightTitle"><span>当月支出</span><br>{{totalExpense}}.00</div>       
     </div>
-    <div v-show="detailShow" class="detail" transition="fade">
-      <div class="detail-main">
-        <input class="calendarBtn" readonly="readonly" size="11" type="text" v-model="calendar.items.text" @click.stop="open($event)" placeholder="请选择日期…" />
-        <Calendar :show="calendar.show" :type="calendar.items.type" :value="calendar.items.value" :x="calendar.x" :y="calendar.y"
-            :begin="calendar.items.begin" @cancel="dateCancel" @ok="dateOk" :end="calendar.items.end" :sep="calendar.items.sep"
-            :single="calendar.items.single" :rangeValue='calendar.items.rangeValue' :autoclose='calendar.items.autoclose'>
-        </Calendar>
-        <span class="weightShow">{{newWeight}}</span><span class="weightKg">&nbsp;kg</span>
-        <i class="detail-add" @click="addWeight">+</i>
-      </div>
-      <div class="detail-input">
-        <div class="detail-line">
-          <button @click="demo(1,1)">1</button>
-          <button @click="demo(1,2)">2</button>
-          <button @click="demo(1,3)">3</button>
-        </div>
-        <div class="detail-line">
-          <button @click="demo(1,4)">4</button>
-          <button @click="demo(1,5)">5</button>
-          <button @click="demo(1,6)">6</button>
-        </div>
-        <div class="detail-line">
-          <button @click="demo(1,7)">7</button>
-          <button @click="demo(1,8)">8</button>
-          <button @click="demo(1,9)">9</button>
-        </div>
-        <div class="detail-line">
-          <button @click="demo(2,null)">C</button>
-          <button @click="demo(1,0)">0</button>
-          <button @click="demo(3,null)">.</button>
-        </div>
-      </div>
-      <div class="detail-close" @click="hideDetail">
-        <i class="icon-close">×</i>
-      </div>
-    </div>
+    <Charge></Charge>
   </div>
 </template>
 
 <script>
 import Store from '@/localstorage'
-import Calendar from './calendar'
+import Charge from './charge'
 var myChart
-var thisMonth = new Date().getMonth() >= 9 ? (new Date().getMonth() + 1).toString() : '0' + (new Date().getMonth() + 1)
-var thisDay = new Date().getDate() >= 9 ? (new Date().getDate() + 1).toString() : '0' + (new Date().getDate() + 1)
+var myChart2
 export default {
   components: {
-    Calendar
+    Charge
   },
   data () {
     return {
       totalEraning: 14,
       totalExpense: 20,
-      msg: 'fit',
-      chart: null,
       detailShow: false,
       newWeight: '',
       inputValue: 0,
       weight: Store.fetch('notebook-fit') || [],
-      calendar: {
-        show: false,
-        x: 0,
-        y: 0,
-        items: {
-          type: 'date',
-          begin: '2015/08/20',
-          end: [new Date().getFullYear(), thisMonth, thisDay].join('/'),
-          value: [new Date().getFullYear(), thisMonth, thisDay].join('/'),
-          text: [new Date().getFullYear(), thisMonth, thisDay].join('/'),
-          sep: '/',
-          single: true,
-          autoclose: true,
-          weeks: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-          months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        }
-      },
       option: {
         tooltip: {
           trigger: 'axis',
@@ -114,13 +60,6 @@ export default {
             data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
           }
         ],
-        // yAxis: {
-        //   show: false,
-        //   type: 'time',
-        //   splitLine: {
-        //     show: false
-        //   }
-        // },
         series: [
           {
             name: '直接访问',
@@ -183,17 +122,63 @@ export default {
             data: [820, 832, 901, 934, 1290, 1330, 1320]
           }
         ]
+      },
+      option2: {
+        title: {
+          text: '南丁格尔玫瑰图',
+          subtext: '纯属虚构',
+          x: 'center'
+        },
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+          x: 'center',
+          y: 'bottom',
+          data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+        },
+        toolbox: {
+          show: true,
+          feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {
+              show: true,
+              type: ['pie', 'funnel']
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+          }
+        },
+        calculable: true,
+        series: [
+          {
+            name: '面积模式',
+            type: 'pie',
+            radius: [30, 110],
+            center: ['50%', '50%'],
+            roseType: 'area',
+            data: [
+              {value: 10, name: 'rose1'},
+              {value: 5, name: 'rose2'},
+              {value: 15, name: 'rose3'},
+              {value: 25, name: 'rose4'},
+              {value: 20, name: 'rose5'},
+              {value: 35, name: 'rose6'},
+              {value: 30, name: 'rose7'},
+              {value: 40, name: 'rose8'}
+            ]
+          }
+        ]
       }
     }
   },
   mounted () {
     myChart = this.$echarts.init(document.getElementById('myChart'))
     myChart.setOption(this.option)
-    myChart.setOption({
-      series: [{
-        data: this.weight
-      }]
-    })
+    myChart2 = this.$echarts.init(document.getElementById('myChart2'))
+    myChart2.setOption(this.option2)
   },
   methods: {
     showDetail () {
@@ -267,18 +252,18 @@ export default {
 }
 .add-btn {
   position: absolute;
-  margin: 5px 45% 0 45%;
+  margin: 10px 45% 0 45%;
   font-style: normal; 
-  width: 60px;
-  height: 60px;
+  width:50px;
+  height:50px;
   color:rgba(0, 111, 111, 0.5);
   background: rgba(255,255,255, 0.6);
   text-align: center;
   font-family: 'Times New Roman';
-  line-height: 60px; 
-  font-size: 4.5em;
+  line-height:50px; 
+  font-size: 4em;
   font-weight: bolder;
-  border-radius: 30px 30px;
+  border-radius: 25px 25px;
 }
 .title {
   font-style: normal; 
@@ -304,11 +289,11 @@ export default {
 }
 .chart {
   width: 100%;
-  height: 80%;
+  height: 85%;
   overflow-x: hidden;
   overflow-y: scroll;
   position: absolute;
-  bottom: 10px;
+  top: 15%;
   left: 0;
   right: 0;
 }

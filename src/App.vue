@@ -12,7 +12,7 @@
         <router-link to="/money">Money</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/pro">Pro</router-link>
+        <router-link to="/weibo">Weibo</router-link>
       </div>
     </div>
     <div class="content">
