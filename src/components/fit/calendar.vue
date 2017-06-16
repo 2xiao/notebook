@@ -1,7 +1,7 @@
 <style scoped>
 .calendar {
   width: 80%;
-  margin-top: 28px;
+  margin-top: 38px;
   margin-left: 4%;
   padding: 12px;
   background: #f3f8fa;
@@ -18,18 +18,18 @@
 .calendar:before {
   position: absolute;
   left:30px;
-  top: -10px;
+  top: -20px;
   content: '';
-  border:5px solid rgba(0, 0, 0, 0);
-  border-bottom-color: #DEDEDE;
+  border:10px solid rgba(0, 0, 0, 0);
+  border-bottom-color: #f3f8fa;
 }
 .calendar:after {
   position: absolute;
   left:30px;
-  top: -9px;
+  top: -19px;
   content: '';
-  border:5px solid rgba(0, 0, 0, 0);
-  border-bottom-color: #fff;
+  border:10px solid rgba(0, 0, 0, 0);
+  border-bottom-color: #f3f8fa;
 }
 .calendar-tools{
   height:32px;

@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <div class="chart">
-        <div id="myChart" style="width: 100%; height:400px;"></div>
+        <div id="myChart" style="width: 100%; height:100%;"></div>
     </div>
     <div class="row">
       <div @click="showDetail" class="add-btn">
         <i>+</i>
       </div>
       <div class="title">
-        <div class="bigTitle">自律给我自由</div>
         <div class="subTitle">记录一下今天的体重吧</div>
+        <div class="bigTitle">自律给我自由</div>
       </div>
     </div>
     <div v-show="detailShow" class="detail" transition="fade">
@@ -56,7 +56,7 @@ import Store from '@/localstorage'
 import Calendar from './calendar'
 var myChart
 var thisMonth = new Date().getMonth() >= 9 ? (new Date().getMonth() + 1).toString() : '0' + (new Date().getMonth() + 1)
-console.log(thisMonth)
+var thisDay = new Date().getDate() >= 9 ? (new Date().getDate() + 1).toString() : '0' + (new Date().getDate() + 1)
 export default {
   components: {
     Calendar
@@ -76,9 +76,9 @@ export default {
         items: {
           type: 'date',
           begin: '2015/08/20',
-          end: [new Date().getFullYear(), thisMonth, new Date().getDate()].join('/'),
-          value: [new Date().getFullYear(), thisMonth, new Date().getDate()].join('/'),
-          text: [new Date().getFullYear(), thisMonth, new Date().getDate()].join('/'),
+          end: [new Date().getFullYear(), thisMonth, thisDay].join('/'),
+          value: [new Date().getFullYear(), thisMonth, thisDay].join('/'),
+          text: [new Date().getFullYear(), thisMonth, thisDay].join('/'),
           sep: '/',
           single: true,
           autoclose: true,
@@ -101,6 +101,7 @@ export default {
           show: false,
           type: 'value',
           min: 'dataMin',
+          max: 'dataMax',
           splitLine: {
             show: false
           }
@@ -287,6 +288,8 @@ export default {
   color: #0276b1;
 }
 .chart {
+  width: 100%;
+  height: 80%;
   overflow-x: hidden;
   position: absolute;
   bottom: 10px;

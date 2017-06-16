@@ -4,9 +4,7 @@ A nootbook SPA by Vue, you can use it to build a todo list, record your weight a
 
 Have a try:  [http://xxwu.tech/notebook/](http://xxwu.tech/notebook/#/)
 
-![](https://github.com/SmartDoubleXiao/notebook/blob/master/static/todo.PNG)
-
-![](https://github.com/SmartDoubleXiao/notebook/blob/master/static/fit.PNG)
+![](https://github.com/SmartDoubleXiao/notebook/blob/master/static/VueNotebook.jpg)
 
 ## Build Setup
 
