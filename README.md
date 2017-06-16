@@ -48,12 +48,12 @@ npm run build --report
 
   - 将新增的数组数据push到总数组时，希望此时对总数组进行一次排序，这样在`echart`中显示的折线图才是时序正确的，我尝试过写一个针对数组子元素对象的第一个属性进行快速排序的算法，但是排序后再setOption echart 时，发现出现了一些bug, 我猜测应该是异步的问题。最后我发现只要在重新渲染echart的时候sort一下就可以了。。。
 
-    ```
-    myChart.setOption({
-    	series: [{
-    		data: this.weight.sort()
-    	}]
-    })
-    ```
+```
+myChart.setOption({
+	series: [{
+		data: this.weight.sort()
+	}]
+})
+```
 
   - 对echart 的各个参数的设置，这个需要查看官方的[配置文档](http://echarts.baidu.com/option.html#series-line.markPoint.label.normal.textStyle.color) , echart还是很强大的，只要你用得好。
