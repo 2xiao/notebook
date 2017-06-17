@@ -1,12 +1,11 @@
 <style scoped>
 .calendar {
-  width: 80%;
-  margin-top: 38px;
-  margin-left: 4%;
-  padding: 12px;
-  background: #f3f8fa;
   position: absolute;
-  border: 1px solid #DEDEDE;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
   border-radius: 2px;
   opacity:.95;
   transition: all .5s ease;
@@ -14,22 +13,6 @@
 .calendar-enter, .calendar-leave {
   opacity: 0;
   transform: translate3d(0,-10px, 0);
-}
-.calendar:before {
-  position: absolute;
-  left:30px;
-  top: -20px;
-  content: '';
-  border:10px solid rgba(0, 0, 0, 0);
-  border-bottom-color: #f3f8fa;
-}
-.calendar:after {
-  position: absolute;
-  left:30px;
-  top: -19px;
-  content: '';
-  border:10px solid rgba(0, 0, 0, 0);
-  border-bottom-color: #f3f8fa;
 }
 .calendar-tools{
   height:32px;
@@ -57,17 +40,19 @@
 }
 .calendar-prev{
   float:left;
+  padding-left: 25px;
 }
 .calendar-next{
   float:right;
+  padding-right: 25px;
 }
 
 .calendar table {
   clear: both;
-  width: 100%;
-  margin-bottom:10px;
+  width: 90%;
   border-collapse: collapse;
   color: #444444;
+  margin: 0 auto;
 }
 
 
@@ -210,7 +195,7 @@ text-transform: uppercase;
 </style>
 
 <template>
-  <div @click.stop='' class="calendar" v-show="show" :style="{'left':x+'px','top':y+'px'}" transition="calendar" transition-mode="out-in">
+  <div @click.stop='' class="calendar" v-show="show" transition="calendar" transition-mode="out-in">
     <div class="calendar-tools">
       <span class="calendar-prev" @click="prev">
         <svg width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="transform-group"><g transform="scale(0.015625, 0.015625)"><path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z" fill="#5e7a88"></path></g></g></svg>

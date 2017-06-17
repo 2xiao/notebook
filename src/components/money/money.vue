@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-    <div class="chart">
+    <Charge :detailshow="detailshow"></Charge>
+    <div v-show="!detailshow" class="chart">
         <div id="myChart"></div>
         <div id="myChart2"></div>
     </div>
-    <div class="row">
+    <div v-show="!detailshow" class="row">
       <div class="title leftTitle"><span>当月收入</span><br>{{totalEraning}}.00</div>
       <div @click="showDetail" class="add-btn">
         <i>+</i>
       </div>
       <div class="title rightTitle"><span>当月支出</span><br>{{totalExpense}}.00</div>       
     </div>
-    <Charge></Charge>
   </div>
 </template>
 
@@ -28,7 +28,8 @@ export default {
     return {
       totalEraning: 14,
       totalExpense: 20,
-      detailShow: false,
+      detailshow: false,
+      detailclose: false,
       option: {
         tooltip: {
           trigger: 'axis',
@@ -179,7 +180,12 @@ export default {
   },
   methods: {
     showDetail () {
-      this.detailShow = true
+      this.detailshow = true
+      console.log('show detail')
+    },
+    onResultChange (val) {
+      this.detailshow = val
+      console.log('onResultChange')
     },
     demo (tip, value) {
       if (tip === 1) {
@@ -206,8 +212,11 @@ export default {
   overflow-y: hidden;
 }
 .add-btn {
+  float: left;
   position: absolute;
-  margin: 10px 45% 0 45%;
+  top: 10px;
+  left: 45%;
+  right: 45%;
   font-style: normal; 
   width:50px;
   height:50px;
