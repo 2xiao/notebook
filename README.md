@@ -27,8 +27,6 @@ npm run build --report
 - TODO 模块的左边栏和右内容版块
   - vuex状态管理
 - 开支模块
-- pro模块
-- 微博登录
 
 ### 已解决的问题
 
@@ -58,3 +56,7 @@ npm run build --report
   ```
 
   - 对echart 的各个参数的设置，这个需要查看官方的[配置文档](http://echarts.baidu.com/option.html#series-line.markPoint.label.normal.textStyle.color) , echart还是很强大的，只要你用得好。
+
+- 开支模块
+  - vue router 嵌套路由，只需要去router的index文件中定义好children就可以了，但是以为一个页面嵌套了多层路由，所以需要使用vuex来管理状态，后续会学习并增加。
+  - props单向数据流问题，因为单向数据流所以子组件无法更改父组件传入的值，但是看到网上很多人说有许多方法课实现双向绑定，我试了一下，没有成功。

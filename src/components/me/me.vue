@@ -43,7 +43,7 @@ Add "scoped" attribute to limit CSS to this component only
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  margin: 20% auto 20px auto;
+  margin: 40px auto 20px auto;
 }
 h1 {
   color: rgba(49, 78, 95, .95);
