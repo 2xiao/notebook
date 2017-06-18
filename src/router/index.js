@@ -3,10 +3,9 @@ import Router from 'vue-router'
 import todo from 'components/todo/todo'
 import fit from 'components/fit/fit'
 import money from 'components/money/money'
-import weibo from 'components/weibo/weibo'
+import me from 'components/me/me'
 import earning from 'components/money/earning'
 import expense from 'components/money/expense'
-// import charge from 'components/money/charge'
 Vue.use(Router)
 
 export default new Router({
@@ -14,8 +13,7 @@ export default new Router({
     { path: '/', redirect: '/todo' },
     { path: '/todo', component: todo },
     { path: '/fit', component: fit },
-    // { path: '/money', component: money },
-    { path: '/weibo', component: weibo },
+    { path: '/me', component: me },
     { path: '/money',
       component: money,
       children: [{

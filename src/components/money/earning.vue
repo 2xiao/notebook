@@ -70,21 +70,21 @@ export default {
   margin: 0 auto;
 }
 .gz{
-  background: url("gz.svg") no-repeat center center;
+  background: url("../../../static/icon/gz.svg") no-repeat center center;
 }
 .hb{
-  background: url("hb.svg") no-repeat center center;
+  background: url("../../../static/icon/hb.svg") no-repeat center center;
 }
 .jz{
-  background: url("jz.svg") no-repeat center center;
+  background: url("../../../static/icon/jz.svg") no-repeat center center;
 }
 .jj{
-  background: url("jj.svg") no-repeat center center;
+  background: url("../../../static/icon/jj.svg") no-repeat center center;
 }
 .tz{
-  background: url("tz.svg") no-repeat center center;
+  background: url("../../../static/icon/tz.svg") no-repeat center center;
 }
 .kl{
-  background: url("kl.svg") no-repeat center center;
+  background: url("../../../static/icon/kl.svg") no-repeat center center;
 }
 </style>

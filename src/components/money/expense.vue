@@ -73,27 +73,27 @@ export default {
   margin: 0 auto;
 }
 .food{
-  background: url("food.svg") no-repeat center center;
+  background: url("../../../static/icon/food.svg") no-repeat center center;
 }
 .tran{
-  background: url("tran.svg") no-repeat center center;
+  background: url("../../../static/icon/tran.svg") no-repeat center center;
 }
 .clot{
-  background: url("clot.svg") no-repeat center center;
+  background: url("../../../static/icon/clot.svg") no-repeat center center;
 }
 .comu{
-  background: url("comu.svg") no-repeat center center;
+  background: url("../../../static/icon/comu.svg") no-repeat center center;
 }
 .enta{
-  background: url("enta.svg") no-repeat center center;
+  background: url("../../../static/icon/enta.svg") no-repeat center center;
 }
 .study{
-  background: url("study.svg") no-repeat center center;
+  background: url("../../../static/icon/study.svg") no-repeat center center;
 }
 .hosp{
-  background: url("hosp.svg") no-repeat center center;
+  background: url("../../../static/icon/hosp.svg") no-repeat center center;
 }
 .tech{
-  background: url("tech.svg") no-repeat center center;
+  background: url("../../../static/icon/tech.svg") no-repeat center center;
 }
 </style>

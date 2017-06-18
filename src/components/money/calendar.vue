@@ -250,14 +250,6 @@ text-transform: uppercase;
         type: String,
         default: 'decade'
       },
-      x: {
-        type: Number,
-        default: 0
-      },
-      y: {
-        type: Number,
-        default: 0
-      },
       type: {
         type: String,
         default: 'date'

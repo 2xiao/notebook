@@ -15,7 +15,7 @@
     <div v-show="detailShow" class="detail" transition="fade">
       <div class="detail-main">
         <input class="calendarBtn" readonly="readonly" size="11" type="text" v-model="calendar.items.text" @click.stop="open($event)" placeholder="请选择日期…" />
-        <Calendar :show="calendar.show" :type="calendar.items.type" :value="calendar.items.value" :x="calendar.x" :y="calendar.y"
+        <Calendar :show="calendar.show" :type="calendar.items.type" :value="calendar.items.value"
             :begin="calendar.items.begin" @cancel="dateCancel" @ok="dateOk" :end="calendar.items.end" :sep="calendar.items.sep"
             :single="calendar.items.single" :rangeValue='calendar.items.rangeValue' :autoclose='calendar.items.autoclose'>
         </Calendar>
