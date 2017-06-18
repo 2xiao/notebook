@@ -96,7 +96,7 @@ export default {
           }
         },
         legend: {
-          data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+          data: ['用餐', '服饰', '交通', '娱乐', '工资']
         },
         grid: {
           left: '3%',
@@ -113,12 +113,12 @@ export default {
           {
             type: 'category',
             axisTick: {show: false},
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月']
           }
         ],
         series: [
           {
-            name: '直接访问',
+            name: '用餐',
             type: 'bar',
             stack: '总量',
             label: {
@@ -127,10 +127,10 @@ export default {
                 position: 'insideRight'
               }
             },
-            data: [320, 302, 301, 334, 390, 330, 320]
+            data: [-320, -302, -301, -334, -390, -330, -320]
           },
           {
-            name: '邮件营销',
+            name: '服饰',
             type: 'bar',
             stack: '总量',
             label: {
@@ -139,10 +139,10 @@ export default {
                 position: 'insideRight'
               }
             },
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: [-120, -132, -101, -134, -90, -230, -210]
           },
           {
-            name: '联盟广告',
+            name: '交通',
             type: 'bar',
             stack: '总量',
             label: {
@@ -151,10 +151,10 @@ export default {
                 position: 'insideRight'
               }
             },
-            data: [220, 182, 191, 234, 290, 330, 310]
+            data: [-220, -182, -191, -234, -290, -330, -310]
           },
           {
-            name: '视频广告',
+            name: '娱乐',
             type: 'bar',
             stack: '总量',
             label: {
@@ -166,7 +166,7 @@ export default {
             data: [-150, -212, -201, -154, -190, -330, -410]
           },
           {
-            name: '搜索引擎',
+            name: '工资',
             type: 'bar',
             stack: '总量',
             label: {
@@ -187,7 +187,7 @@ export default {
         legend: {
           x: 'center',
           y: 'bottom',
-          data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+          data: ['工资', '红包', '兼职', '奖金', '投资', '啃老']
         },
         toolbox: {
           show: true,
@@ -211,14 +211,12 @@ export default {
             center: ['50%', '50%'],
             roseType: 'area',
             data: [
-              {value: 10, name: 'rose1'},
-              {value: 5, name: 'rose2'},
-              {value: 15, name: 'rose3'},
-              {value: 25, name: 'rose4'},
-              {value: 20, name: 'rose5'},
-              {value: 35, name: 'rose6'},
-              {value: 30, name: 'rose7'},
-              {value: 40, name: 'rose8'}
+              {value: 10, name: '工资'},
+              {value: 5, name: '红包'},
+              {value: 15, name: '兼职'},
+              {value: 25, name: '奖金'},
+              {value: 20, name: '投资'},
+              {value: 35, name: '啃老'}
             ]
           }
         ]
@@ -231,7 +229,7 @@ export default {
         legend: {
           x: 'center',
           y: 'bottom',
-          data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+          data: ['用餐', '交通', '服饰', '通讯', '娱乐', '学习', '医疗', '数码']
         },
         toolbox: {
           show: true,
@@ -255,17 +253,23 @@ export default {
             center: ['50%', '50%'],
             roseType: 'area',
             data: [
-              {value: 10, name: 'rose1'},
-              {value: 5, name: 'rose2'},
-              {value: 15, name: 'rose3'},
-              {value: 25, name: 'rose4'},
-              {value: 20, name: 'rose5'},
-              {value: 35, name: 'rose6'},
-              {value: 30, name: 'rose7'},
-              {value: 40, name: 'rose8'}
+              {value: 10, name: '用餐'},
+              {value: 5, name: '交通'},
+              {value: 15, name: '服饰'},
+              {value: 25, name: '通讯'},
+              {value: 20, name: '娱乐'},
+              {value: 35, name: '学习'},
+              {value: 30, name: '医疗'},
+              {value: 40, name: '数码'}
             ]
           }
         ]
+      },
+      earning: {
+        items: {
+          classify: 'gz',
+          classifyArr: ['gz', 'gb', 'jz', 'jj', 'tz', 'kl']
+        }
       },
       calendar: {
         show: false,

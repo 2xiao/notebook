@@ -38,6 +38,18 @@
 
 <script>
 export default {
+  // props () {
+  //   classify: {
+  //     type: String,
+  //     default: 'gz'
+  //   },
+  //   classifyArr: {
+  //     type: Array,
+  //     default: function () {
+  //       return ['gz', 'gb', 'jz', 'jj', 'tz', 'kl']
+  //     }
+  //   },
+  // },
   data () {
     return {
       msg: 'expense'
