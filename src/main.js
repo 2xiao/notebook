@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import echarts from 'echarts'
+import store from './vuex/store'
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 Vue.use(VueResource)
@@ -12,6 +13,7 @@ Vue.use(VueResource)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
