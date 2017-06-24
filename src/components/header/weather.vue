@@ -36,7 +36,7 @@ margin: 0 auto;
 }
 
 .temp {
-  font-size: 15px;
+  font-size: 13px;
   float: right;
   margin: 10px, 5px;
   padding-top: 0px;
