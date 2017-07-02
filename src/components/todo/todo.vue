@@ -1,5 +1,6 @@
-<template>
+<template>  
   <div class="container">
+    <v-header></v-header>
     <div class="input">
       <input autofocus type="text" @keydown.enter.prevent="handleSubmit"
       id="todo-input" placeholder="What to do today ?"
@@ -28,7 +29,9 @@
 
 
 <script>
+import header from 'components/todo/header/header'
 import Store from '@/localstorage'
+
 export default {
   data () {
     return {
@@ -36,6 +39,11 @@ export default {
       todos: Store.fetch('notebook-todo') || []
     }
   },
+
+  components: {
+    'v-header': header
+  },
+
   watch: {
     todos: {
       handler: function (todos) {
@@ -44,6 +52,7 @@ export default {
       deep: true
     }
   },
+
   methods: {
     handleSubmit () {
       this.todos.unshift({
@@ -60,6 +69,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

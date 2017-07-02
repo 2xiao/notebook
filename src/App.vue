@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <v-header></v-header>
     <div class="tab">
       <div class="tab-item">
         <router-link to="/todo"><div class="svgbtn todobtn"></div></router-link>
@@ -22,13 +21,6 @@
 </template>
 
 <script>
-  import header from 'components/header/header'
-  export default {
-    name: 'app',
-    components: {
-      'v-header': header
-    }
-  }
 </script>
 
 <style scoped>
@@ -87,7 +79,7 @@ html, body, #app {
   overflow-y: auto;
   overflow-x: hidden;
   position:absolute;
-  top: 140px;
+  top: 40px;
   left: 0;
   right: 0;
   bottom: 0;
