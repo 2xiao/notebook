@@ -6,8 +6,10 @@ import router from './router'
 import VueResource from 'vue-resource'
 import echarts from 'echarts'
 import store from './vuex/store'
+import axios from 'axios'
 
 Vue.prototype.$echarts = echarts
+Vue.prototype.$ajax = axios
 Vue.config.productionTip = false
 Vue.use(VueResource)
 /* eslint-disable no-new */
