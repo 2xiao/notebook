@@ -14,9 +14,7 @@
         <router-link to="/me"><div class="svgbtn mebtn"></div></router-link>
       </div>
     </div>
-    <div class="content">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -74,15 +72,5 @@ html, body, #app {
 }
 .tab-item {
   flex: 1;
-}
-.content {
-  overflow-y: auto;
-  overflow-x: hidden;
-  position:absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, #6ca6c3 0%,#b5e2ec 100%);
 }
 </style>
