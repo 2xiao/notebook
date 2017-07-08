@@ -640,7 +640,7 @@ function getMockMsgSize () {
 }
 
 #prompt-head{position:relative;
-  border-bottom:1px solid #f3f3f3;
+  border-bottom:1px solid #ddd;
   background-color:#f3f3f3;
   height: 44px;
 }
