@@ -45,7 +45,7 @@
         v-on:click="togglePrompt(true)"
         :class="{'clickable': !isErXiaoTyping }">
         <div v-if="!isErXiaoTyping" class="input-div">说点什么……</div>
-        <div v-if="isErXiaoTyping" class="input-div">二小正在输入中</div>
+        <div v-if="isErXiaoTyping" class="input-div">二小正在输入中……</div>
         <div class="input-btn">+</div>
       </div>
     </div>

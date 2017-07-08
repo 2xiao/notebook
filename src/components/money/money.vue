@@ -427,7 +427,7 @@ export default {
 
 }
 #myChart, #myChart2, #myChart3 {
-  width: 90%;
+  width: 400px;
   height: 450px;
   margin: 10px auto;
 }
