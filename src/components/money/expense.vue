@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="contain">
     <div class="svg-line">
       <div class="btn">
         <div class="svgbtn food"></div>
@@ -51,7 +51,8 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.contain {
+  background-color: white;
   color: #455963;
   font-size: .9em;
   width: 100%; 

@@ -45,7 +45,7 @@ table {
 
 /* custom */
 a {
-    color: #7e8c8d;
+    color: rgba(2, 118, 177, 0.7);
     text-decoration: none;
     -webkit-backface-visibility: hidden;
 }

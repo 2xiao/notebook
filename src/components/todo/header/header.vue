@@ -1,5 +1,5 @@
 <template>
-  <div class="header" :style="bgimage">
+  <div class="header">
     <div class="time">
       <span class="day">{{time.getDate()}}</span>
       <span class="week">{{aweek[time.getDay()]}}</span> 
@@ -59,8 +59,8 @@ export default {
   position: relative;
   float: left;
   width: 50%;
-  margin-top: 20px;
-  margin-left: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 .time span {
@@ -82,6 +82,7 @@ export default {
 
 .content-wrapper {
   float: right;
-  width: 130px;
+  padding-right: 10px;
+  width: 35%;
 }
 </style>

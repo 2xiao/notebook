@@ -1,5 +1,5 @@
 <template>
-  <div id="chat">
+  <div id="chat" :class="{ 'has-prompt': hasPrompt }">
     <div id="chat-body">
       <div id="chat-body-bg"></div>
       <div id="chat-body-content">
@@ -7,44 +7,46 @@
           <div id="mock-msg" class="msg" v-html="latestMsgContent"></div>
         </div>
         <div class="msg-row"
-            v-for="(msg, index) in messages"
-            :key="index"
-            :class="msg.author === 'xianzhe' ? 'msg-xianzhe' : 'msg-me'">
+          v-for="(msg, index) in messages"
+          :key="index"
+          :class="msg.author === 'erxiao' ? 'msg-erxiao' : 'msg-me'">
+          <img v-if="msg.author != 'erxiao'" class="avater avatar-me" src="../../../static/user.jpg"/>
+          <img v-if="msg.author === 'erxiao'" class="avater avatar-erxiao" src="../../../static/avatar.jpg"/>
           <div class="msg"
-              :class="'msg-bounce-in-' + (msg.author === 'xianzhe' ? 'left': 'right')"
-              :style="msg.width && msg.height && {width: msg.width - 26 + 'px', height: msg.height - 18 + 'px'}"
-              v-html="msg.content"></div>
+            :class="'msg-bounce-in-' + (msg.author === 'erxiao' ? 'left': 'right')"
+            :style="msg.width && msg.height && {width: msg.width + 5 + 'px', height: msg.height + 3 + 'px'}"
+            v-html="msg.content"></div>
         </div>
       </div>
     </div>
     <div id="chat-foot">
       <div id="prompt">
           <div id="prompt-head">
-              <div class="say-something">说点什么啊啊……</div>
-              <a href="javascript:;" class="close-btn"
-                  v-on:click="togglePrompt(false)"></a>
+              <div class="say-something">说点什么……</div>
+              <div class="close-btn" v-on:click="togglePrompt(false)">×</div>
           </div>
           <div id="prompt-body">
               <ul class="responses" v-if="lastDialog">
                   <li v-for="res in lastDialog.responses">
-                      <a href="javascript:;" v-on:click="respond(res)">{{ res.content }}</a>
+                    <a href="javascript:;" v-on:click="respond(res)">{{ res.content }}</a>
                   </li>
               </ul>
               <div class="next-topic"
                   v-if="!lastDialog || !lastDialog.responses">
                   <ul class="topics">
                       <li v-for="topic in nextTopics">
-                          <a href="javascript:;" v-on:click="ask(topic)">{{ topic.brief }}</a>
+                        <a href="javascript:;" v-on:click="ask(topic)">{{ topic.brief }}</a>
                       </li>
                   </ul>
               </div>
           </div>
       </div>
       <div id="input-hint" class="say-something"
-      v-on:click="togglePrompt(true)"
-      :class="{'clickable': !isErXiaoTyping }">
-        <span v-if="!isErXiaoTyping">说点什么……</span>
-        <span v-if="isErXiaoTyping">二小正在输入中</span>
+        v-on:click="togglePrompt(true)"
+        :class="{'clickable': !isErXiaoTyping }">
+        <div v-if="!isErXiaoTyping" class="input-div">说点什么……</div>
+        <div v-if="isErXiaoTyping" class="input-div">二小正在输入中</div>
+        <div class="input-btn">+</div>
       </div>
     </div>
     <div id="prompt-bg" v-on:click="togglePrompt(false)"></div>
@@ -59,14 +61,14 @@ _gaq.push(['_setAccount', 'UA-38205696-1'])
 _gaq.push(['_trackPageview'])
 
 const AUTHOR = {
-  XIANZHE: 'xianzhe',
+  ERXIAO: 'erxiao',
   ME: 'me'
 }
 
 const TYPING_MSG_CONTENT = `
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
+  <div style="display:inline-block;width:10px;height:10px;background:#b5e2ec;-webkit-border-radius:50%;border-radius:50%;-webkit-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform-origin:50% 50%;-webkit-animation:dotZoomIn 1.4s infinite;animation:dotZoomIn 1.4s infinite;-webkit-animation-delay:-0.32s;animation-delay:-0.32s"></div>
+  <div style="display:inline-block;width:10px;height:10px;background:#b5e2ec;-webkit-border-radius:50%;border-radius:50%;-webkit-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform-origin:50% 50%;-webkit-animation:dotZoomIn 1.4s infinite;animation:dotZoomIn 1.4s infinite;-webkit-animation-delay:-0.16s;animation-delay:-0.16s"></div>
+  <div style="display:inline-block;width:10px;height:10px;background:#b5e2ec;-webkit-border-radius:50%;border-radius:50%;-webkit-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform-origin:50% 50%;-webkit-animation:dotZoomIn 1.4s infinite;animation:dotZoomIn 1.4s infinite"></div>
 `
 
 export default {
@@ -86,7 +88,7 @@ export default {
   mounted () {
     this.$ajax.get('./static/dialog.json').then(data => {
       this.dialogs = data
-      this.nextTopics = this.dialogs.fromUser
+      this.nextTopics = this.dialogs.data.fromUser
       this.appendDialog('0000')
     })
   },
@@ -107,10 +109,10 @@ export default {
         .forEach(content => {
           this.msgChain = this.msgChain
             .then(() => delay(700))
-            .then(() => this.sendMsg(content, AUTHOR.XIANZHE))
+            .then(() => this.sendMsg(content, AUTHOR.ERXIAO))
         })
-      return dialog.nextXianzhe
-        ? this.appendDialog(dialog.nextXianzhe)
+      return dialog.nextErxiao
+        ? this.appendDialog(dialog.nextErxiao)
         : this.msgChain.then(() => {
           this.lastDialog = dialog
           this.isErXiaoTyping = false
@@ -119,7 +121,7 @@ export default {
 
     getDialog (id) {
       // only one dialog should be matched by id
-      const dialogs = this.dialogs.data.fromXianzhe
+      const dialogs = this.dialogs.data.fromErxiao
         .filter(dialog => dialog.id === id)
       return dialogs ? dialogs[0] : null
     },
@@ -195,7 +197,7 @@ export default {
 
     togglePrompt (toShow) {
       if (this.isErXiaoTyping) {
-        // don't prompt if xianzhe is typing
+        // don't prompt if ErXiao is typing
         return
       }
       this.hasPrompt = toShow
@@ -207,7 +209,7 @@ export default {
         _gaq.push(['_trackEvent', 'Home', 'respond', response.content])
       }
 
-      return this.say(response.content, response.nextXianzhe)
+      return this.say(response.content, response.nextErxiao)
     },
 
     ask (fromUser) {
@@ -216,7 +218,7 @@ export default {
         _gaq.push(['_trackEvent', 'Home', 'ask', fromUser.brief])
       }
       const content = getRandomMsg(fromUser.details)
-      return this.say(content, fromUser.nextXianzhe)
+      return this.say(content, fromUser.nextErxiao)
     },
 
     say (content, dialogId) {
@@ -227,7 +229,7 @@ export default {
         // send user msg
         .then(() => this.sendMsg(content, AUTHOR.ME))
         .then(() => delay(300))
-        // add xianzhe's next dialogs
+        // add ErXiao's next dialogs
         .then(() => this.appendDialog(dialogId))
     }
   }
@@ -381,7 +383,6 @@ function getMockMsgSize () {
   top:0;
   bottom:45px;
   width:100%;
-  /*background:#E8F9F6;*/
 }
 
 #chat-body a{
@@ -404,9 +405,9 @@ function getMockMsgSize () {
   position:relative;
   width:100%;
   height:25px;
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(34,195,170,0.1)), color-stop(0, transparent));
-  background:-webkit-linear-gradient(rgba(34,195,170,0.1) 0, transparent);
-  background:linear-gradient(rgba(34,195,170,0.1) 0, transparent)
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(181,226,236,0.1)), color-stop(0, transparent));
+  background:-webkit-linear-gradient(rgba(181,226,236,0.1) 0, transparent);
+  background:linear-gradient(rgba(181,226,236,0.1) 0, transparent)
 }
 
 #chat-body-bg:after{
@@ -414,9 +415,9 @@ function getMockMsgSize () {
   bottom:0;
   width:100%;
   height:15px;
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), to(rgba(34,195,170,0.05)));
-  background:-webkit-linear-gradient(transparent 0, rgba(34,195,170,0.05) 100%);
-  background:linear-gradient(transparent 0, rgba(34,195,170,0.05) 100%)
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), to(rgba(181,226,236,0.05)));
+  background:-webkit-linear-gradient(transparent 0, rgba(181,226,236,0.05) 100%);
+  background:linear-gradient(transparent 0, rgba(181,226,236,0.05) 100%)
 }
 
 #chat-body-content{
@@ -434,15 +435,17 @@ function getMockMsgSize () {
 }
 
 #chat-body-content::-webkit-scrollbar{
-  width:8px
+  width:4px
 }
 
 #chat-body-content::-webkit-scrollbar-thumb{
-  background-color:#bdf4eb;
+  background-color:rgba(125, 125, 125, 0.7);
   -webkit-border-radius:4px;
   border-radius:4px
 }
-
+#chat-body-content::-webkit-scrollbar-track-piece {
+  background-color:rgba(0, 0, 0, 0);
+}
 #prompt-body {
   -webkit-border-radius:0 !important;
   border-radius:0 !important
@@ -453,13 +456,35 @@ function getMockMsgSize () {
   bottom:0;
   width:100%;
   height:44px;
-  background:white;
-  border-top:1px solid #f3f3f3
+  background:#f3f3f3;
 }
 
-.say-something {
-  padding:10px 25px;
+.input-div {
+  display: inline-block;
+  width: 75%;
+  height:30px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  float: left;
+  background-color: white;
   color:#bbb;
+  margin: 6px 0 6px 4%;
+  text-align: left;
+  line-height: 30px;
+  padding-left: 8px;
+}
+
+.input-btn {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  font-size: 35px;
+  line-height: 30px;
+  border: 1px solid #bbb;
+  color: #666;
+  float: right;
+  margin: 6px 4% 6px 0;
 }
 
 #mock-msg-row {
@@ -484,11 +509,11 @@ function getMockMsgSize () {
   clear:both
 }
 
-.msg-xianzhe {
+.msg-erxiao {
   margin-bottom:20px
 }
 
-.msg-xianzhe+.msg-xianzhe {
+.msg-erxiao+.msg-erxiao {
   margin-top:-15px
 }
 
@@ -502,15 +527,13 @@ function getMockMsgSize () {
 
 .msg {
   display:inline-block;
-  padding:9px 14px;
+  padding:11px 14px 9px 14px;
   max-width:65%;
   overflow:hidden;
   word-wrap:break-word;
-  font-size:14px;
-  line-height:24px;
+  font-size:15px;
+  line-height:18px;
   background:white;
-  -webkit-border-radius:20px;
-  border-radius:20px;
   -webkit-box-shadow:5px 5px 15px 0 rgba(102,102,102,0.1);
   box-shadow:5px 5px 15px 0 rgba(102,102,102,0.1);
   -webkit-transition:width .12s ease-out, height .12s ease-out;
@@ -519,51 +542,42 @@ function getMockMsgSize () {
   transform:translate3d(0, 0, 0)
 }
 
-.msg-xianzhe .msg {
-  -webkit-border-radius:0 20px 20px 20px;
-  border-radius:0 20px 20px 20px;
+.msg-erxiao .msg {
+  text-align: left;
+  float: left;
+  -webkit-border-radius:9px 9px 9px 9px;
+  border-radius:9px 9px 9px 9px;
 }
 
 .msg-me .msg {
+  text-align: left;
   float:right;
-  color:white;
-  -webkit-border-radius:20px 20px 0 20px;
-  border-radius:20px 20px 0 20px;
+  color:black;
+  -webkit-border-radius:9px 9px 9px 9px;
+  border-radius:9px 9px 9px 9px;
   -webkit-box-shadow:5px 5px 15px 0 rgba(102,102,102,0.15);
   box-shadow:5px 5px 15px 0 rgba(102,102,102,0.15);
+  background: #a1e562 !important;
 }
 
 .msg img {
   margin:8px 0
 }
 
-.msg .dot {
-  position:relative;
-  display:inline-block;
-  width:10px;
-  height:10px;
-  background:#b0e9e0;
-  -webkit-border-radius:50%;
-  border-radius:50%;
-  -webkit-transform-origin:50% 50%;
-  -ms-transform-origin:50% 50%;
-  transform-origin:50% 50%;
-  -webkit-animation:dotZoomIn 1.4s infinite;
-  animation:dotZoomIn 1.4s infinite
+.avater {
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
 }
 
-.msg .dot:first-child {
-  -webkit-animation-delay:-0.32s;
-  animation-delay:-0.32s
+.avatar-me{
+  float: right;
+  margin: 0 -6px 0 5px;
 }
 
-.msg .dot:nth-child(2) {
-  -webkit-animation-delay:-0.16s;
-  animation-delay:-0.16s
-}
-
-.msg .dot+.dot {
-  margin-left:5px
+.avatar-erxiao{
+  margin: 0 5px 0 -12px ;
+  float: left;
 }
 
 .msg-bounce-in-left {
@@ -572,7 +586,6 @@ function getMockMsgSize () {
   transform-origin:0 0;
   -webkit-animation:msgBounceIn .4s;
   animation:msgBounceIn .4s;
-  float: left;
 }
 
 .msg-bounce-in-right {
@@ -581,7 +594,6 @@ function getMockMsgSize () {
   transform-origin:100% 100%;
   -webkit-animation:msgBounceIn .4s;
   animation:msgBounceIn .4s;
-  float: right;
 }
 
 #input-hint.clickable{
@@ -590,7 +602,7 @@ function getMockMsgSize () {
 
 #prompt-bg{opacity:0}
 
-#mobile.has-prompt #prompt-bg{
+#chat.has-prompt #prompt-bg{
   position:absolute;
   top:0;
   z-index:50;
@@ -598,8 +610,6 @@ function getMockMsgSize () {
   width:100%;
   height:100%;
   background-color:rgba(0,0,0,0.5);
-  -webkit-border-radius:20px;
-  border-radius:20px;
   opacity:1;
   -webkit-transition:opacity .3s;
   transition:opacity .3s
@@ -623,7 +633,7 @@ function getMockMsgSize () {
   transition-property:transform, -webkit-transform
 }
 
-#mobile.has-prompt #prompt{
+#chat.has-prompt #prompt{
   -webkit-transform:translateY(0);
   -ms-transform:translateY(0);
   transform:translateY(0)
@@ -631,48 +641,41 @@ function getMockMsgSize () {
 
 #prompt-head{position:relative;
   border-bottom:1px solid #f3f3f3;
-  background-color:white
+  background-color:#f3f3f3;
+  height: 44px;
 }
 
 
 #prompt-head .say-something{
-  padding-top:12px;
-  padding-bottom:12px
+  position:absolute;
+  width: 75%;
+  height:30px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  color:#bbb;
+  margin: 6px 0 6px 4%;
+  text-align: left;
+  line-height: 30px;
+  padding-left: 8px;
 }
 
 .close-btn{
   position:absolute;
-  top:0;
-  right:0;
-  height:20px;
-  padding:12px 18px
-}
-
-.close-btn:before,.close-btn:after{
-  content:'';
-  display:block;
-  width:16px;
-  height:2px;
-  position:relative;
-  top:8px;
-  background-color:#ddd
-}
-
-.close-btn:before{
-  top:10px;
-  -webkit-transform:rotateZ(45deg);
-  -ms-transform:rotate(45deg);
-  transform:rotateZ(45deg)
-}
-
-.close-btn:after{
-  -webkit-transform:rotateZ(-45deg);
-  -ms-transform:rotate(-45deg);
-  transform:rotateZ(-45deg)
+  height:30px;
+  width: 30px;
+  border-radius: 30px;
+  font-size: 35px;
+  line-height: 30px;
+  border: 1px solid #bbb;
+  color: #666;
+  top: 6px;
+  right:4%;
+  bottom:6px;
 }
 
 #prompt-body{
-  background-color:white;
+  background-color: white;
   overflow:hidden
 }
 
@@ -689,7 +692,8 @@ function getMockMsgSize () {
   height:100%;
   padding:12px 18px;
   color:#666;
-  text-decoration:none
+  text-decoration:none;
+  text-align: left;
 }
 
 #prompt-body .responses li a:hover{
@@ -697,7 +701,8 @@ function getMockMsgSize () {
 }
 
 #prompt-body .next-topic{
-  padding:12px 18px
+  background-color: #f3f3f3;
+  padding:10px 0px;
 }
 
 #prompt-body .next-topic h3{
@@ -708,36 +713,35 @@ function getMockMsgSize () {
 }
 
 #prompt-body .next-topic .topics{
-  text-align:center
+  text-align:center;
 }
 
 #prompt-body .next-topic .topics li{
   display:inline-block;
-  margin:5px 3px
+  width: 23%;
+  margin:3px 3px;
 }
 
 #prompt-body .next-topic .topics li a{
   display:block;
-  padding:5px 12px;
-  margin-right:5px;
-  -webkit-border-radius:20px;
-  border-radius:20px;
+  padding:5px 14px;
+  margin-right:2px;
+  -webkit-border-radius:8px;
+  border-radius:8px;
   text-decoration:none;
-  color:white
+  color:rgba(2, 118, 177, 0.7);
 }
 
 #prompt-body .next-topic .topics li a:hover{
   text-decoration:none
 }
 
-#prompt-head .say-something{
-  padding-top:15px;
-  padding-bottom:15px
-}
-
 #prompt-body .responses li a{
-  padding:15px 21px
+  padding:10px 21px;
 }
 
+.primary-bg,.msg-me .msg,#prompt-body .next-topic .topics li a{
+  background: white;
+}
 
 </style>

@@ -96,7 +96,7 @@ export default {
 }
 #todo-input {
   width: 75%;
-  margin:20px 15px 20px 10%;
+  margin:0px 15px 20px 10%;
   outline:none;
   background: none;
   border: none;

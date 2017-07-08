@@ -427,9 +427,9 @@ export default {
 
 }
 #myChart, #myChart2, #myChart3 {
-  width: 320px;
-  height: 360px;
-  margin:0 auto;
+  width: 90%;
+  height: 450px;
+  margin: 10px auto;
 }
 .detail {
   position: relative;
