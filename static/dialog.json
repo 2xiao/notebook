@@ -1,0 +1,501 @@
+{
+    "fromErxiao": [{
+        "id": "0000",
+        "details": [
+            ["很高兴遇见你"]
+        ],
+        "responses": [{
+            "content": "很高兴遇见你",
+            "nextErxiao": ["0003"]
+        }, {
+            "content": "你好呀，晓晓",
+            "nextErxiao": ["0001"]
+        }, {
+            "content": "真的吗？",
+            "nextErxiao": ["0002"]
+        }],
+        "nextUser": ["1000"]
+    }, {
+        "id": "0001",
+        "details": [
+            ["又来找我聊天啦", "最近过得好吗？"]
+        ],
+        "responses": [{
+            "content": "恩，每天都很开心，就是想你了，来看看",
+            "nextErxiao": ["0043"]
+        }, {
+            "content": "最近天气有点糟糕，心情也不太好",
+            "nextErxiao": ["0044"]
+        }, {
+            "content": "你是谁？",
+            "nextErxiao": ["0005"]
+        }]
+    }, {
+        "id": "0002",
+        "details": [
+            ["我就那么随口一说啦"]
+        ],
+        "nextErxiao": ["0003"]
+    }, {
+        "id": "0003",
+        "details": [
+            ["你想知道点什么？"]
+        ],
+        "responses": [{
+            "content": "你是谁？",
+            "nextErxiao": ["0005"]
+        }, {
+            "content": "问什么都可以吗？",
+            "nextErxiao": ["0006"]
+        }]
+    }, {
+        "id": "0004",
+        "details": [
+            ["以前听民谣和迷幻摇滚比较多一点", "自从打开了古典音乐的大门，就一发不可收拾的爱上了莫扎特", "你知道听着第十号小夜曲骑车冲下知春路的大下坡是什么感觉吗？"]
+        ],
+        "nextErxiao": ["0010"]
+    }, {
+        "id": "0005",
+        "details": [
+            ["唔……", "我是北京邮电大学研三的研究僧", "你可以叫我二小或者晓晓"]
+        ],
+        "responses": [{
+            "content": "你的职业是？",
+            "nextErxiao": ["0023"]
+        }, {
+            "content": "你有什么业余爱好呀？",
+            "nextErxiao": ["0007"]
+        }, {
+            "content": "研三，那马上就要找工作咯？",
+            "nextErxiao": ["0023"]
+        }]
+    }, {
+        "id": "0006",
+        "details": [
+            ["话是没错啦……", "不过，你好像不能输入文字耶！"]
+        ],
+        "responses": [{
+            "content": "……"
+        }, {
+            "content": "你赢了"
+        }]
+    }, {
+        "id": "0007",
+        "details": [
+            [
+                "大部分时候当然是选择宅在家里听音乐、写代码啦…",
+                "不过有时候也会做很多有意思的事，天气好会去爬山、游泳、打网球、跑步，但是很奇怪运动完体重一点都不会减…",
+                "也喜欢看书，有时候会写点东西发在公众号上",       
+                "有点三分钟热度，所以兴趣爱好倒不少，就是都没啥特别厉害的~"
+            ]],
+        "responses": [{
+            "content": "二小喜欢听什么歌？",
+            "nextErxiao": ["0004"]
+        }, {
+            "content": "二小去过哪些地方？",
+            "nextErxiao": ["0010"]
+        }, {
+            "content": "二小的微信公众号是？",
+            "nextErxiao": ["0029"]
+        }]
+    }, {
+        "id": "0008",
+        "details": [
+            [
+                "喜欢啊！",
+                "我比较喜欢的作家有王小波、周嘉宁、张晓晗",
+                "他们风格迥异，但是文字都很真诚",
+                "另良心推荐一个微信公众号：【温拿道场】 北大中文系才子"
+            ]
+        ],
+        "responses": [{
+            "content": "哇！我也喜欢他~"
+        }, {
+            "content": "谢谢推荐……"
+        }]
+    }, {
+        "id": "0009",
+        "details": [
+            ["哈哈哈，你猜？"]
+        ],
+        "responses": [{
+            "content": "二小这么可爱，一定是男孩纸吧！",
+            "nextErxiao": ["0015"]
+        }, {
+            "content": "就算你有，也千万别告诉我！",
+            "nextErxiao": ["0018"]
+        }, {
+            "content": "哈哈哈，你才不会有呢！",
+            "nextErxiao": ["0017"]
+        }]
+    }, {
+        "id": "0010",
+        "details": [
+            ["我剪过一些旅行的视频，想看看吗？"]
+        ],
+        "responses": [{
+            "content": "好啊！二小还会剪视频呀~",
+            "nextErxiao": ["0011"]
+        }, {
+            "content": "算了，我不是很感兴趣……",
+            "nextErxiao": ["0012"]
+        }]
+    }, {
+        "id": "0011",
+        "details": [
+            ["这是<a href='http://www.miaopai.com/show/bJUjfyAI9wsgLvQD1r0Kfw__.htm'>去拉萨回来</a>剪的", "这是<a href='http://www.miaopai.com/show/oDRTBEaOFWC96Kuhppeglw__.htm'>去爬山和骑行</a>的混剪", "视频是用GoPro和iPhone录制的哈"]
+        ],
+        "responses": [{
+            "content": "二小你好有趣，求勾搭~",
+            "nextErxiao": ["0013"]
+        }, {
+            "content": "恩，不错不错",
+            "nextErxiao": ["0026"]
+        }]
+    }, {
+        "id": "0012",
+        "details": [
+            ["哦"],
+            ["好吧……"],
+            ["哼~"]
+        ]
+    }, {
+        "id": "0013",
+        "details": [
+            [
+                "我的博客：<a href='http://xxwu.tech'>http://xxwu.tech</a>",
+                "微博：<a href='https://weibo.com/wuxiaoxiao2011to2015'>天才举左手小小举右手</a>",
+                "GitHub：<a href='https://github.com/SmartDoubleXiao'>天才举左手小小举右手</a>",
+                "知乎：<a href='https://www.zhihu.com/people/wuxiaoxiaojs'>王富有</a>",
+                "快去和我互粉吧~"
+            ]
+        ],
+        "responses": [{
+            "content": "好啊好啊！"
+        }, {
+            "content": "唔，算了吧……",
+            "nextErxiao": ["0012"]
+        }]
+    }, {
+        "id": "0015",
+        "details": [
+            ["哈哈，你猜对了！", "这是我女朋友", "<img src='./static/erxiao.jpg' style='width:133px;height:236px;'/>"]
+        ],
+        "responses": [{
+            "content": "……",
+            "nextErxiao": ["0016"]
+        }]
+    }, {
+        "id": "0016",
+        "details": [
+            [
+                "好吧，为了避免没 get 到梗的人误会，我还是澄清一下",
+                "这是我自己的照片啦~",
+                "怎么样，骗到王道还是很开心的吧？"
+            ]
+        ],
+        "responses": [{
+            "content": "你真逗……"
+        }, {
+            "content": "你说什么都对！"
+        }]
+    }, {
+        "id": "0017",
+        "details": [
+            ["你……", "我也觉得我注定孤独一生……"]
+        ],
+        "nextErxiao": ["0018"]
+    }, {
+        "id": "0018",
+        "details": [
+            ["单身好多年了…"]
+        ],
+        "responses": [{
+            "content": "好好奇二小会喜欢什么样的男孩纸啊~~",
+            "nextErxiao": ["0020"]
+        }, {
+            "content": "哈哈哈哈哈哈哈哈"
+        }]
+    }, {
+        "id": "0019",
+        "details": [
+            ["所以，你一定也是一只单身狗吧", "自抱自泣.JPG"]
+        ]
+    }, {
+        "id": "0020",
+        "details": [
+            [
+                "唔……我想想……",
+                "我觉得吧~",
+                "其实两个人在一起，爱不重要。",
+                "重要的是，个人的完整性，是孤独，克制，自我折磨",
+                "还有日常，带着体温的共度，是互不侵犯，是更自觉地生活。"
+            ]
+        ],
+        "responses": [{
+            "content": "啥意思？",
+            "nextErxiao": ["0021"]
+        },{
+            "content": "赞同！好有道理啊！",
+            "nextErxiao": ["0019"]
+        }, {
+            "content": "切~说得好像你有对象似的！",
+            "nextErxiao": ["0012"]
+        }]
+    }, {
+        "id": "0021",
+        "details": [
+            ["你看，这你都听不懂……知道为什么我不喜欢你了吧？"]
+        ],
+        "responses": [{
+            "content": "……"
+        }]
+    }, {
+        "id": "0023",
+        "details": [
+            ["毕业之后打算做一枚程序媛，准确的说是前端工程师", "目前正在腾讯实习"]
+        ],
+        "responses": [{
+            "content": "嗯哼~腾讯？",
+            "nextErxiao": ["0024"]
+        }, {
+            "content": "好巧，我也是码农！",
+            "nextErxiao": ["0041"]
+        }, {
+            "content": "我们在做一件很酷的事，愿不愿意加入我们？",
+            "nextErxiao": ["0033"]
+        }]
+    }, {
+        "id": "0024",
+        "details": [
+            ["恩", "OMG事业群 腾讯新闻"]
+        ],
+        "responses": [{
+            "content": "可以具体说说你都做了什么吗？",
+            "nextErxiao": ["0025"]
+        }, {
+            "content": "哦"
+        }]
+    }, {
+        "id": "0025",
+        "details": [
+            [
+                "我目前负责内部新闻发布平台的重构和腾讯新闻的H5页面",
+                "关注【腾讯新闻】公众号就可以每天看到我做的H5推送哦~",
+                "这一波硬广啊…",
+                "杰哥…晚饭加鸡腿不？"
+            ]
+        ],
+        "responses": [{
+            "content": "厉害了，用的什么技术栈？",
+            "nextErxiao": ["0042"]
+        }, {
+            "content": "哦"
+        }]
+    }, {
+        "id": "0026",
+        "details": [
+            ["谢谢~"],
+            ["嘿嘿嘿嘿~"]
+        ]
+    }, {
+        "id": "0027",
+        "details": [
+            [
+                "主页的创意来自<a href='http://zhangwenli.com/'>羡辙</a>的个人主页",
+                "她也是个很有趣的女孩子",
+                "咦，我为什么要说“也”？"
+            ]
+        ],
+        "responses": [{
+            "content": "赞！",
+            "nextErxiao": ["0034"]
+        }, {
+            "content": "嗯嗯",
+            "nextErxiao": ["0034"]
+        }, {
+            "content": "……",
+            "nextErxiao": ["0034"]
+        }]
+    }, {
+        "id": "0029",
+        "details": [
+            [
+                "这个世界上大部分人的大部分时间都在做很无聊的事，但我仍希望能有一小部分自我，能稍稍地带来一些不同",
+                "不定期地写点文章发在公众号里(貌似已经很久没更新了……)",
+                "微信搜索“天才举左手小小举右手”，或者扫描这个二维码关注：",
+                "<img src='./static/wechat.jpg' style='width:100px;height:100px;'/>"
+            ]
+        ]
+    }, {
+        "id": "0030",
+        "details": [
+            ["我美吗？"]
+        ],
+        "responses": [{
+            "content": "还没看我怎么知道…",
+            "nextErxiao": ["0031"]
+        }, {
+            "content": "二小当然最美啦！",
+            "nextErxiao": ["0032"]
+        }]
+    }, {
+        "id": "0031",
+        "details": [
+            ["哼，那不给你看了"]
+        ],
+        "responses": [{
+            "content": "……"
+        }]
+    }, {
+        "id": "0032",
+        "details": [
+            ["嘻嘻，哪里哪里~", "这是今年元旦去拉萨拍的哟~", "<img src='./static/erxiao2.jpg' style='width:133px;height:236px;'/>"]
+        ],
+        "responses": [{
+            "content": "二小这么好看，一定是个男孩纸吧~",
+            "nextErxiao": ["0015"]
+        }, {
+            "content": "原来二小是个文艺青年",
+            "nextErxiao": ["0029"]
+        }]
+    }, {
+        "id": "0033",
+        "details": [
+            [
+                "虽然对目前的工作很满意，不过对于有趣的工作机会保持开放态度",
+                "我的简历可以在 <a href='http://www.linkedin.com/in/wuxiaoxiaojs/' target='_blank'>LinkedIn</a> 查看",
+                "如果团队的技术氛围很棒，可以发挥我的脑洞和特长，欢迎邮件至 <a href='mailto:wuxiaoxiaojs@hotmail.com'>wuxiaoxiaojs@hotmail.com</a> 勾搭~",
+                "对城市没有什么要求，在北京快十年了，但是深圳和杭州也蛮不错嘛~"
+            ]
+        ],
+        "responses": [{
+            "content": "哈哈好的，等我出任CEO，会回来找你的",
+            "nextErxiao": ["0026"]
+        }, {
+            "content": "好，我看看"
+        }]
+    }, {
+        "id": "0034",
+        "details": [
+            [
+                "这个世界上大部分人的大部分时间都在做很无聊的事，但我仍希望能有一小部分自我，能稍稍地带来一些不同",
+                "做好一件事的方式，就是不要把它当作生命里唯一的事。"
+            ]
+        ],
+        "responses": [{
+            "content": "……"
+        }, {
+            "content": "我要围观代码！",
+            "nextErxiao": ["0036"]
+        }]
+    }, {
+        "id": "0036",
+        "details": [
+            ["代码在 GitHub 上开源", "<a href='https://github.com/SmartDoubleXiao/notebook' target='_blank'>https://github.com/SmartDoubleXiao/notebook</a>", "欢迎围观，欢迎Star"]
+        ]
+    }, {
+        "id": "0041",
+        "details": [
+            ["让我们用程序员的方式互粉吧~", "<a href=' target='_blank'https://github.com/SmartDoubleXiao' target='_blank'>https://github.com/SmartDoubleXiao</a>", "你懂的……"]
+        ],
+        "responses": [{
+            "content": "好哒~这就去"
+        }]
+    }, {
+        "id": "0042",
+        "details": [
+            ["工作中主要使用Angular 2和React", "不过我以前也用Vue写过一些项目，这个网页就是用Vue写的哈"]
+        ],
+        "responses": [{
+            "content": "我也想做一个类似的网站，求源码！",
+            "nextErxiao": ["0036"]
+        }, {
+            "content": "听起来很厉害的样子，想不想加入我们？",
+            "nextErxiao": ["0033"]
+        }, {
+            "content": "瞧把你厉害的",
+            "nextErxiao": ["0026"]
+        }]
+    }, {
+        "id": "0043",
+        "details": [
+            ["真好，一起继续努力吧~", "生活，易如反掌。"]
+        ]
+    }, {
+        "id": "0044",
+        "details": [
+            ["给你一个隔空抱抱", "我也有处在低谷的时候", "别想太多，只管低头向上爬，总会熬过去的~"]
+        ],
+        "responses": [{
+            "content": "嗯嗯"
+        }, {
+            "content": "这满满一锅鸡汤……",
+            "nextErxiao": ["0012"]
+        }]
+    }],
+    "fromUser": [{
+        "id": "1000",
+        "brief": "爱好",
+        "details": [
+            "你有什么业余爱好呀？",
+            "二小的业余时间都做什么呀？"
+        ],
+        "nextErxiao": ["0007"]
+    }, {
+        "id": "1001",
+        "brief": "读书",
+        "details": [
+            "二小喜欢读书吗？",
+            "二小喜欢读书吗？二小有什么喜欢的书吗？"
+        ],
+        "nextErxiao": ["0008"]
+    }, {
+        "id": "1002",
+        "brief": "视频",
+        "details": [
+            "二小要不要秀一下自己剪辑的视频啊？",
+            "发个你剪的视频链接来看看？"
+        ],
+        "nextErxiao": ["0010"]
+    }, {
+        "id": "1003",
+        "brief": "职业",
+        "details": [
+            "二小这么多才多艺，究竟靠什么吃饭呢？"
+        ],
+        "nextErxiao": ["0023"]
+    }, {
+        "id": "1004",
+        "brief": "恋爱",
+        "details": [
+            "可以八卦一下二小的感情生活吗？嘿嘿……",
+            "二小有男朋友嘛？"
+        ],
+        "nextErxiao": ["0009"]
+    }, {
+        "id": "1005",
+        "brief": "王道",
+        "details": [
+            "求王道",
+            "二小二小！我要看你的王道~~"
+        ],
+        "nextErxiao": ["0030"]
+    }, {
+        "id": "1006",
+        "brief": "勾搭",
+        "details": [
+            "二小怎么才能联系到你？",
+            "二小真可爱，求勾搭"
+        ],
+        "nextErxiao": ["0013"]
+    }, {
+        "id": "1007",
+        "brief": "关于",
+        "details": [
+            "这个主页好有意思啊！",
+            "这个主页的创意很棒~"
+        ],
+        "nextErxiao": ["0026", "0027"]
+    }]
+}
