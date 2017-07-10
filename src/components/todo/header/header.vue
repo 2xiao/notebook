@@ -19,7 +19,7 @@ export default {
     this.time = new Date()
     this.month = ['January', 'February', 'March', 'April ', 'May', 'June', 'Jul', 'August', 'September', 'October', 'November ', 'December']
     this.aweek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    var self = this
+    let self = this
     Weather.getJSON('http://wthrcdn.etouch.cn/weather_mini?city=北京').then(function (obj) {
       self.arr = {
         weat: obj.data.forecast[0].type,
@@ -29,14 +29,11 @@ export default {
   },
   data () {
     return {
+      remoteIp: {'ret': 1},
+      city: '',
       arr: {
         weat: '晴',
         temp: 0
-      },
-      bgimage: {
-        backgroundImage: 'url(' + require('components/todo/header/bg01.jpg') + ')',
-        backgroundSize: '100%, 100px',
-        backgroundRepeat: 'no-repeat'
       }
     }
   },
