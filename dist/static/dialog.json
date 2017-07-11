@@ -363,7 +363,7 @@
         "details": [
             [
                 "虽然对目前的工作很满意，不过对于有趣的工作机会保持开放态度",
-                "我的简历可以在 <a href='http://www.linkedin.com/in/wuxiaoxiaojs/' target='_blank'>LinkedIn</a> 查看",
+                "我的简历可以在 <a href='http://www.linkedin.com/in/wuxiaoxiaojs/'>LinkedIn</a> 查看",
                 "如果团队的技术氛围很棒，可以发挥我的脑洞和特长，欢迎邮件至 <a href='mailto:wuxiaoxiaojs@hotmail.com'>wuxiaoxiaojs@hotmail.com</a> 勾搭~",
                 "对城市没有什么要求，在北京快十年了，但是深圳和杭州也蛮不错嘛~"
             ]
@@ -391,12 +391,12 @@
     }, {
         "id": "0036",
         "details": [
-            ["代码在 GitHub 上开源", "<a href='https://github.com/SmartDoubleXiao/notebook' target='_blank'>https://github.com/SmartDoubleXiao/notebook</a>", "欢迎围观，欢迎Star"]
+            ["代码在 GitHub 上开源", "<a href='https://github.com/SmartDoubleXiao/notebook'>https://github.com/SmartDoubleXiao/notebook</a>", "欢迎围观，欢迎Star"]
         ]
     }, {
         "id": "0041",
         "details": [
-            ["让我们用程序员的方式互粉吧~", "<a href=' target='_blank'https://github.com/SmartDoubleXiao' target='_blank'>https://github.com/SmartDoubleXiao</a>", "你懂的……"]
+            ["让我们用程序员的方式互粉吧~", "<a href='https://github.com/SmartDoubleXiao'>https://github.com/SmartDoubleXiao</a>", "你懂的……"]
         ],
         "responses": [{
             "content": "好哒~这就去"

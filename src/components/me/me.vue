@@ -56,10 +56,6 @@
 <script>
 import $ from 'jquery'
 
-var _gaq = _gaq || []
-_gaq.push(['_setAccount', 'UA-38205696-1'])
-_gaq.push(['_trackPageview'])
-
 const AUTHOR = {
   ERXIAO: 'erxiao',
   ME: 'me'
@@ -86,7 +82,7 @@ export default {
     }
   },
   mounted () {
-    this.$ajax.get('./static/dialog.json').then(data => {
+    this.$axios.get('./static/dialog.json').then(data => {
       this.dialogs = data
       this.nextTopics = this.dialogs.data.fromUser
       this.appendDialog('0000')
@@ -204,19 +200,10 @@ export default {
     },
 
     respond (response) {
-      // send to ga
-      if (_gaq) {
-        _gaq.push(['_trackEvent', 'Home', 'respond', response.content])
-      }
-
       return this.say(response.content, response.nextErxiao)
     },
 
     ask (fromUser) {
-      // send to ga
-      if (_gaq) {
-        _gaq.push(['_trackEvent', 'Home', 'ask', fromUser.brief])
-      }
       const content = getRandomMsg(fromUser.details)
       return this.say(content, fromUser.nextErxiao)
     },

@@ -9,7 +9,7 @@ import store from './vuex/store'
 import axios from 'axios'
 
 Vue.prototype.$echarts = echarts
-Vue.prototype.$ajax = axios
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(VueResource)
 /* eslint-disable no-new */
