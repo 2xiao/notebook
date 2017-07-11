@@ -10,8 +10,8 @@
           v-for="(msg, index) in messages"
           :key="index"
           :class="msg.author === 'erxiao' ? 'msg-erxiao' : 'msg-me'">
-          <img v-if="msg.author != 'erxiao'" class="avater avatar-me" src="../../../static/user.jpg"/>
-          <img v-if="msg.author === 'erxiao'" class="avater avatar-erxiao" src="../../../static/avatar.jpg"/>
+          <img v-if="msg.author != 'erxiao'" class="avater avatar-me" src="../../../static/img/user.jpg"/>
+          <img v-if="msg.author === 'erxiao'" class="avater avatar-erxiao" src="../../../static/img/avatar.jpg"/>
           <div class="msg"
             :class="'msg-bounce-in-' + (msg.author === 'erxiao' ? 'left': 'right')"
             :style="msg.width && msg.height && {width: msg.width + 5 + 'px', height: msg.height + 3 + 'px'}"

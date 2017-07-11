@@ -179,7 +179,7 @@
     }, {
         "id": "0015",
         "details": [
-            ["哈哈，你猜对了！", "这是我女朋友", "<img src='./static/erxiao.jpg' style='width:133px;height:236px;'/>"]
+            ["哈哈，你猜对了！", "这是我女朋友", "<img src='./static/img/erxiao.jpg' style='width:133px;height:236px;'/>"]
         ],
         "responses": [{
             "content": "……",
@@ -322,7 +322,7 @@
         "details": [
             [
                 "微信搜索“天才举左手小小举右手”，或者扫描这个二维码关注：",
-                "<img src='./static/wechat.jpg' style='width:100px;height:100px;'/>",
+                "<img src='./static/img/wechat.jpg' style='width:100px;height:100px;'/>",
                 "不定期地写点文章发在公众号里(貌似已经很久没更新了……)"
             ]
         ]
@@ -349,7 +349,7 @@
     }, {
         "id": "0032",
         "details": [
-            ["嘻嘻，哪里哪里~", "这是今年元旦去拉萨拍的哟~", "<img src='./static/erxiao2.jpg' style='width:133px;height:236px;'/>"]
+            ["嘻嘻，哪里哪里~", "这是今年元旦去拉萨拍的哟~", "<img src='./static/img/erxiao2.jpg' style='width:133px;height:236px;'/>"]
         ],
         "responses": [{
             "content": "二小这么好看，一定是个男孩纸吧~",
