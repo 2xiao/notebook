@@ -31,6 +31,7 @@
 <script>
 import header from 'components/todo/header/header'
 import Store from '@/localstorage'
+import Po from '@/proif'
 
 export default {
   data () {
@@ -59,9 +60,10 @@ export default {
         done: false,
         value: this.value.trim()
       })
-      if (this.todos.length > 15) {
-        this.todos.pop()
-      }
+      Po.proif.if1(this.todos.length > 1, console.log('TODO条数大于1'))
+      // if (this.todos.length > 15) {
+      //   this.todos.pop()
+      // }
       this.value = ''
     },
     handleDone (todo) {
