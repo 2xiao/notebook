@@ -60,7 +60,11 @@ export default {
         done: false,
         value: this.value.trim()
       })
-      Po.proif.if1(this.todos.length > 1, console.log('TODO条数大于1'))
+      Po.proif.if1(this.todos.length > 1, function (data1) {
+        console.log('this.todos')
+        console.log('this.todos')
+        data1 = 'woshiyigezifuchuan'
+      })
       // if (this.todos.length > 15) {
       //   this.todos.pop()
       // }
@@ -79,7 +83,7 @@ export default {
 .container {
   color: black;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   position:absolute;
   top: 40px;
   left: 0;
