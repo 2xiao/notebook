@@ -14,12 +14,12 @@
         <li v-for="todo in todos" v-bind:key="todo" class="todo">
         <!-- container for the completed button -->
           <div :class="['check-circle', {'check-circle-active': todo.done}]" @click="handleDone(todo)">
-          <div class="circle">
-            <div :class="['checkmark', {'checkmark-active': todo.done}]">&#10003;</div>
-          </div>            
-          <div :class="['text', {'text-done': todo.done}]">
-            {{todo.value}}
-          </div>                
+            <div class="circle">
+              <div :class="['checkmark', {'checkmark-active': todo.done}]">&#10003;</div>
+            </div>            
+            <div :class="['text', {'text-done': todo.done}]">
+              {{todo.value}}
+            </div>           
           </div>
         </li>
       </ul>
@@ -31,7 +31,6 @@
 <script>
 import header from 'components/todo/header/header'
 import Store from '@/localstorage'
-import Po from '@/proif'
 
 export default {
   data () {
@@ -60,14 +59,9 @@ export default {
         done: false,
         value: this.value.trim()
       })
-      Po.proif.if1(this.todos.length > 1, function (data1) {
-        console.log('this.todos')
-        console.log('this.todos')
-        data1 = 'woshiyigezifuchuan'
-      })
-      // if (this.todos.length > 15) {
-      //   this.todos.pop()
-      // }
+      if (this.todos.length > 15) {
+        this.todos.pop()
+      }
       this.value = ''
     },
     handleDone (todo) {
@@ -83,7 +77,7 @@ export default {
 .container {
   color: black;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   position:absolute;
   top: 40px;
   left: 0;
@@ -140,10 +134,19 @@ export default {
   border-radius: 15px 15px;
 }
 
+#todos-list {
+  position: absolute;
+  top: 161px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 #todos-list ul {
   display: block;
   list-style-type: none;
-  padding: 0px;
+  padding: 0 0 10px 0;
 }
 #todo-item {
   padding: 24px 24px 24px 75px;

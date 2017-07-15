@@ -7,31 +7,32 @@
     </div>
     <div class="content-wrapper"> 
       <v-weather :arr="arr"></v-weather>  
-    </div>    
+    </div> 
   </div>
 </template>
 
 <script>
 import weather from 'components/todo/header/weather'
-import Weather from 'components/todo/header/getWeather'
+
 export default {
   created () {
     this.time = new Date()
     this.month = ['January', 'February', 'March', 'April ', 'May', 'June', 'Jul', 'August', 'September', 'October', 'November ', 'December']
     this.aweek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     let self = this
-    Weather.getJSON('http://wthrcdn.etouch.cn/weather_mini?city=北京').then(function (obj) {
-      self.arr = {
-        weat: obj.data.forecast[0].type,
-        temp: obj.data.wendu
-      }
+    this.$axios.get('http://ip.chinaz.com/getip.aspx').then((obj) => {
+      self.arr.city = obj.data.split('\'')[3].split(' ')[0]
+      this.$axios.get('http://wthrcdn.etouch.cn/weather_mini?city=' + self.arr.city).then((obj) => {
+        self.arr.weat = obj.data.data.forecast[0].type
+        self.arr.temp = obj.data.data.wendu
+      })
     })
   },
   data () {
     return {
       remoteIp: {'ret': 1},
-      city: '',
       arr: {
+        city: '',
         weat: '晴',
         temp: 0
       }
@@ -55,9 +56,9 @@ export default {
 .time {
   position: relative;
   float: left;
-  width: 50%;
+  width: 55%;
   padding-top: 20px;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .time span {
@@ -79,7 +80,15 @@ export default {
 
 .content-wrapper {
   float: right;
-  padding-right: 10px;
+  margin-right: 10px;
   width: 35%;
+  max-width: 200px;
+}
+.more-weather{
+  position: absolute;
+  top: 100px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 </style>
