@@ -9,7 +9,7 @@
     <div class="svg" v-else>
       <svg id="sunday" class="osc"  width="100%" height="100%" viewBox="-120 -140 260 260"><defs><line id="ray" x1="-2" x2="20"></line></defs><g id="sun"><g class="osc"><circle r="65"></circle><g id="rays1"><g transform="rotate(330)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(300)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(270)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(240)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(210)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(180)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(150)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(120)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(90)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(60)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(30)"><use xlink:href="#ray" x="85"></use></g><g transform="rotate(0)"><use xlink:href="#ray" x="85"></use></g></g></g></g></svg>
     </div>
-    <div class="temp">{{arr.city + ' ' + arr.temp + '°C '}}{{arr.weat}}</div>
+    <div class="temp">{{'北京 ' + arr.temp + '°C '}}{{arr.weat}}</div>
 	</div>
 </template>
 
