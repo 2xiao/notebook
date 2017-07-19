@@ -34,6 +34,7 @@ npm run build --report
   - vuex状态管理
   - 添加删除和编辑功能
   - 样式重构
+  - 在安卓下布局没有处理好
 
 - 体重模块
   - 输入数据的范围要有限制
@@ -68,7 +69,7 @@ npm run build --report
 
   - calendar 实现日期选择，返回的日期的格式需要再处理一下，比如（YYYY-MM-DD）的日期和`getMonth()`得到的日期就存在1月~9月前有没有`0`的差别，这导致了在比较日期大小时无法正确排序
 
-  - 将新增的数组数据push到总数组时，希望此时对总数组进行一次排序，这样在`echart`中显示的折线图才是时序正确的，我尝试过写一个针对数组子元素对象的第一个属性进行快速排序的算法，但是排序后再setOption echart 时，发现出现了一些bug, 我猜测应该是异步的问题。最后我发现只要在重新渲染echart的时候sort一下就可以了。。。
+  - 将新增的数组数据push到总数组时，希望此时对总数组进行一次排序，这样在`echarts`中显示的折线图才是时序正确的，我尝试过写一个针对数组子元素对象的第一个属性进行快速排序的算法，但是排序后再setOption echarts 时，发现出现了一些bug, 我猜测应该是异步的问题。最后我发现只要在重新渲染echart的时候sort一下就可以了。。。
 
   ```
 
@@ -79,7 +80,7 @@ npm run build --report
   })
   ```
 
-  - 对echart 的各个参数的设置，这个需要查看官方的[配置文档](http://echarts.baidu.com/option.html#series-line.markPoint.label.normal.textStyle.color) , echart还是很强大的，只要你用得好。
+  - 对echarts 的各个参数的设置，这个需要查看官方的[配置文档](http://echarts.baidu.com/option.html#series-line.markPoint.label.normal.textStyle.color) , echarts还是很强大的，只要你用得好。
 
 - 开支模块
   - vue router 嵌套路由，只需要去router的index文件中定义好children就可以了，但是以为一个页面嵌套了多层路由，所以需要使用vuex来管理状态，后续会学习并增加。
