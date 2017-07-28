@@ -92,7 +92,7 @@ npm run build --report
   })
   ```
 
-  - 对echarts 的各个参数的设置，这个需要查看官方的[配置文档](http://echarts.baidu.com/option.html#series-line.markPoint.label.normal.textStyle.color) , echarts还是很强大的，只要你用得好。
+  - 对ECharts 的各个参数的设置，这个需要查看官方的[配置文档](http://echarts.baidu.com/option.html#series-line.markPoint.label.normal.textStyle.color) , ECharts还是很强大的，只要你用得好。
 
 - 开支模块
   - vue router 嵌套路由，只需要去router的index文件中定义好children就可以了，但是以为一个页面嵌套了多层路由，所以需要使用vuex来管理状态，后续会学习并增加。
